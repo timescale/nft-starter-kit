@@ -1,0 +1,71 @@
+databases:
+- database_name: NFT Starter Kit
+  extra: '{"metadata_params":{},"engine_params":{},"schemas_allowed_for_csv_upload":[]}'
+  sqlalchemy_uri: postgresql://docker:password@timescaledb:5432/starter_kit
+  tables:
+  - columns:
+    - column_name: bucket
+      is_dttm: true
+      type: TIMESTAMP WITH TIME ZONE
+    - column_name: median_price
+      type: DOUBLE PRECISION
+    - column_name: mean_price
+      type: DOUBLE PRECISION
+    - column_name: close_price
+      type: DOUBLE PRECISION
+    - column_name: open_price
+      type: DOUBLE PRECISION
+    - column_name: high_price
+      type: DOUBLE PRECISION
+    - column_name: low_price
+      type: DOUBLE PRECISION
+    - column_name: volume_eth
+      type: DOUBLE PRECISION
+    - column_name: asset_id
+      type: BIGINT
+    - column_name: volume
+      type: BIGINT
+    - column_name: asset_name
+      type: TEXT
+    - column_name: nft_image
+      type: TEXT
+    - column_name: collection_slug
+      type: TEXT
+    main_dttm_col: bucket
+    metrics:
+    - expression: COUNT(*)
+      metric_name: count
+      metric_type: count
+      verbose_name: COUNT(*)
+    params: '{"remote_id": 57, "database_name": "NFT Starter Kit", "import_time": 1635362465}'
+    schema: public
+    table_name: superset_assets_daily
+  - columns:
+    - column_name: bucket
+      is_dttm: true
+      type: TIMESTAMP WITH TIME ZONE
+    - column_name: median_price
+      type: DOUBLE PRECISION
+    - column_name: mean_price
+      type: DOUBLE PRECISION
+    - column_name: max_price
+      type: DOUBLE PRECISION
+    - column_name: volume_eth
+      type: DOUBLE PRECISION
+    - column_name: most_expensive_nft_id
+      type: BIGINT
+    - column_name: volume
+      type: BIGINT
+    - column_name: nft_image
+      type: TEXT
+    - column_name: slug
+      type: TEXT
+    main_dttm_col: bucket
+    metrics:
+    - expression: COUNT(*)
+      metric_name: count
+      metric_type: count
+      verbose_name: COUNT(*)
+    params: '{"remote_id": 58, "database_name": "NFT Starter Kit", "import_time": 1635362465}'
+    schema: public
+    table_name: superset_collections_daily

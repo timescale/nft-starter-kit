@@ -1,0 +1,1304 @@
+{
+    "dashboards": [
+        {
+            "__Dashboard__": {
+                "css": "",
+                "dashboard_title": "Collections",
+                "description": null,
+                "json_metadata": "{\"timed_refresh_immune_slices\": [], \"expanded_slices\": {}, \"refresh_frequency\": 0, \"default_filters\": \"{\\\"4\\\": {\\\"slug\\\": [\\\"cryptopunks\\\"], \\\"__time_range\\\": \\\"No filter\\\"}}\", \"color_scheme\": null, \"filter_scopes\": {\"4\": {\"slug\": {\"scope\": [\"ROOT_ID\"], \"immune\": [6]}, \"__time_range\": {\"scope\": [\"ROOT_ID\"], \"immune\": [6]}}}, \"remote_id\": 1, \"import_time\": 1635362957}",
+                "position_json": "{\"CHART-5mbqZwAKL5\":{\"children\":[],\"id\":\"CHART-5mbqZwAKL5\",\"meta\":{\"chartId\":2,\"height\":50,\"sliceName\":\"Daily number of NFT transactions\",\"uuid\":\"ade6950a-278d-45a0-a8ae-b9d52e2d2a83\",\"width\":6},\"parents\":[\"ROOT_ID\",\"GRID_ID\",\"ROW-yflUGXVOy\"],\"type\":\"CHART\"},\"CHART-HR2zfTPvcd\":{\"children\":[],\"id\":\"CHART-HR2zfTPvcd\",\"meta\":{\"chartId\":4,\"height\":50,\"sliceName\":\"Collection filter\",\"uuid\":\"b8b707f3-e064-4e3c-870d-41ac3db8791d\",\"width\":4},\"parents\":[\"ROOT_ID\",\"GRID_ID\",\"ROW-cS-ohzK3H\"],\"type\":\"CHART\"},\"CHART-jt4KMvptrG\":{\"children\":[],\"id\":\"CHART-jt4KMvptrG\",\"meta\":{\"chartId\":6,\"height\":50,\"sliceName\":\"Collections with the highest volume\",\"uuid\":\"628d7510-eee7-4b58-828f-e349b0594cce\",\"width\":4},\"parents\":[\"ROOT_ID\",\"GRID_ID\",\"ROW-cS-ohzK3H\"],\"type\":\"CHART\"},\"CHART-mE41hxBb4r\":{\"children\":[],\"id\":\"CHART-mE41hxBb4r\",\"meta\":{\"chartId\":3,\"height\":50,\"sliceName\":\"Mean and median sales price\",\"uuid\":\"7551540d-8cf0-4c05-b5d1-2bc9543dd77d\",\"width\":4},\"parents\":[\"ROOT_ID\",\"GRID_ID\",\"ROW--AK9ftaxJG\",\"COLUMN-m6_gqCF5BW\"],\"type\":\"CHART\"},\"CHART-mbPIUtflRX\":{\"children\":[],\"id\":\"CHART-mbPIUtflRX\",\"meta\":{\"chartId\":5,\"height\":50,\"sliceName\":\"Most expensive items sold in this period\",\"uuid\":\"9d3f0756-3799-40ed-aed5-e9fbf68386bb\",\"width\":4},\"parents\":[\"ROOT_ID\",\"GRID_ID\",\"ROW-cS-ohzK3H\"],\"type\":\"CHART\"},\"CHART-r21fAxZy0V\":{\"children\":[],\"id\":\"CHART-r21fAxZy0V\",\"meta\":{\"chartId\":1,\"height\":50,\"sliceName\":\"Daily ETH volume of NFT transactions\",\"uuid\":\"7ed90846-9377-4553-a4a9-425b82413a96\",\"width\":6},\"parents\":[\"ROOT_ID\",\"GRID_ID\",\"ROW-yflUGXVOy\"],\"type\":\"CHART\"},\"COLUMN-UUL7lUxuMU\":{\"children\":[],\"id\":\"COLUMN-UUL7lUxuMU\",\"meta\":{\"background\":\"BACKGROUND_TRANSPARENT\",\"width\":2},\"parents\":[\"ROOT_ID\",\"GRID_ID\",\"ROW--AK9ftaxJG\"],\"type\":\"COLUMN\"},\"COLUMN-m6_gqCF5BW\":{\"children\":[\"CHART-mE41hxBb4r\"],\"id\":\"COLUMN-m6_gqCF5BW\",\"meta\":{\"background\":\"BACKGROUND_TRANSPARENT\",\"width\":8},\"parents\":[\"ROOT_ID\",\"GRID_ID\",\"ROW--AK9ftaxJG\"],\"type\":\"COLUMN\"},\"COLUMN-wpQx83Kths\":{\"children\":[],\"id\":\"COLUMN-wpQx83Kths\",\"meta\":{\"background\":\"BACKGROUND_TRANSPARENT\",\"width\":2},\"parents\":[\"ROOT_ID\",\"GRID_ID\",\"ROW--AK9ftaxJG\"],\"type\":\"COLUMN\"},\"DASHBOARD_VERSION_KEY\":\"v2\",\"GRID_ID\":{\"children\":[\"ROW-cS-ohzK3H\",\"ROW-yflUGXVOy\",\"ROW--AK9ftaxJG\"],\"id\":\"GRID_ID\",\"parents\":[\"ROOT_ID\"],\"type\":\"GRID\"},\"HEADER_ID\":{\"id\":\"HEADER_ID\",\"meta\":{\"text\":\"Collections\"},\"type\":\"HEADER\"},\"ROOT_ID\":{\"children\":[\"GRID_ID\"],\"id\":\"ROOT_ID\",\"type\":\"ROOT\"},\"ROW--AK9ftaxJG\":{\"children\":[\"COLUMN-wpQx83Kths\",\"COLUMN-m6_gqCF5BW\",\"COLUMN-UUL7lUxuMU\"],\"id\":\"ROW--AK9ftaxJG\",\"meta\":{\"background\":\"BACKGROUND_TRANSPARENT\"},\"parents\":[\"ROOT_ID\",\"GRID_ID\"],\"type\":\"ROW\"},\"ROW-cS-ohzK3H\":{\"children\":[\"CHART-HR2zfTPvcd\",\"CHART-mbPIUtflRX\",\"CHART-jt4KMvptrG\"],\"id\":\"ROW-cS-ohzK3H\",\"meta\":{\"background\":\"BACKGROUND_TRANSPARENT\"},\"parents\":[\"ROOT_ID\",\"GRID_ID\"],\"type\":\"ROW\"},\"ROW-yflUGXVOy\":{\"children\":[\"CHART-5mbqZwAKL5\",\"CHART-r21fAxZy0V\"],\"id\":\"ROW-yflUGXVOy\",\"meta\":{\"background\":\"BACKGROUND_TRANSPARENT\"},\"parents\":[\"ROOT_ID\",\"GRID_ID\"],\"type\":\"ROW\"}}",
+                "slices": [
+                    {
+                        "__Slice__": {
+                            "cache_timeout": null,
+                            "datasource_name": "public.superset_collections_daily",
+                            "datasource_type": "table",
+                            "id": 1,
+                            "params": "{\"adhoc_filters\": [], \"annotation_layers\": [], \"color_scheme\": \"supersetColors\", \"comparison_type\": \"values\", \"datasource\": \"58__table\", \"extra_form_data\": {}, \"forecastInterval\": 0.8, \"forecastPeriods\": 10, \"granularity_sqla\": \"bucket\", \"groupby\": [\"slug\"], \"label_colors\": {}, \"legendOrientation\": \"top\", \"legendType\": \"scroll\", \"limit\": null, \"logAxis\": true, \"markerSize\": 6, \"metrics\": [{\"aggregate\": \"MAX\", \"column\": {\"column_name\": \"volume_eth\", \"description\": null, \"expression\": null, \"filterable\": true, \"groupby\": true, \"id\": 485, \"is_dttm\": false, \"python_date_format\": null, \"type\": \"DOUBLE PRECISION\", \"type_generic\": 0, \"verbose_name\": null}, \"expressionType\": \"SIMPLE\", \"hasCustomLabel\": true, \"isNew\": false, \"label\": \"volume (ETH)\", \"optionName\": \"metric_ycgvd6br4c_yxo35qy30ws\", \"sqlExpression\": null}], \"order_desc\": true, \"rich_tooltip\": true, \"row_limit\": null, \"show_legend\": true, \"slice_id\": 80, \"time_grain_sqla\": null, \"time_range\": \"No filter\", \"time_range_endpoints\": [\"inclusive\", \"exclusive\"], \"tooltipTimeFormat\": \"smart_date\", \"truncateYAxis\": true, \"url_params\": {}, \"viz_type\": \"echarts_timeseries_smooth\", \"x_axis_time_format\": \"smart_date\", \"yAxisTitle\": \"ETH volume\", \"y_axis_bounds\": [null, null], \"y_axis_format\": \"SMART_NUMBER\", \"zoomable\": true, \"remote_id\": 1, \"datasource_name\": \"superset_collections_daily\", \"schema\": \"public\", \"database_name\": \"NFT Starter Kit\", \"import_time\": 1635362957}",
+                            "query_context": "{\"datasource\":{\"id\":58,\"type\":\"table\"},\"force\":false,\"queries\":[{\"time_range\":\"No filter\",\"granularity\":\"bucket\",\"filters\":[],\"extras\":{\"time_grain_sqla\":null,\"time_range_endpoints\":[\"inclusive\",\"exclusive\"],\"having\":\"\",\"having_druid\":[],\"where\":\"\"},\"applied_time_extras\":{},\"columns\":[\"slug\"],\"metrics\":[{\"expressionType\":\"SIMPLE\",\"column\":{\"id\":485,\"column_name\":\"volume_eth\",\"verbose_name\":null,\"description\":null,\"expression\":null,\"filterable\":true,\"groupby\":true,\"is_dttm\":false,\"type\":\"DOUBLE PRECISION\",\"type_generic\":0,\"python_date_format\":null},\"aggregate\":\"MAX\",\"sqlExpression\":null,\"isNew\":false,\"hasCustomLabel\":true,\"label\":\"volume (ETH)\",\"optionName\":\"metric_ycgvd6br4c_yxo35qy30ws\"}],\"orderby\":[[{\"expressionType\":\"SIMPLE\",\"column\":{\"id\":485,\"column_name\":\"volume_eth\",\"verbose_name\":null,\"description\":null,\"expression\":null,\"filterable\":true,\"groupby\":true,\"is_dttm\":false,\"type\":\"DOUBLE PRECISION\",\"type_generic\":0,\"python_date_format\":null},\"aggregate\":\"MAX\",\"sqlExpression\":null,\"isNew\":false,\"hasCustomLabel\":true,\"label\":\"volume (ETH)\",\"optionName\":\"metric_ycgvd6br4c_yxo35qy30ws\"},false]],\"annotation_layers\":[],\"timeseries_limit\":0,\"order_desc\":true,\"url_params\":{},\"custom_params\":{},\"custom_form_data\":{},\"is_timeseries\":true,\"time_offsets\":[],\"post_processing\":[null,null,null,{\"operation\":\"pivot\",\"options\":{\"index\":[\"__timestamp\"],\"columns\":[\"slug\"],\"aggregates\":{\"volume (ETH)\":{\"operator\":\"mean\"}},\"drop_missing_columns\":false}},null,null]}],\"result_format\":\"json\",\"result_type\":\"full\"}",
+                            "slice_name": "Daily ETH volume of NFT transactions",
+                            "viz_type": "echarts_timeseries_smooth"
+                        }
+                    },
+                    {
+                        "__Slice__": {
+                            "cache_timeout": null,
+                            "datasource_name": "public.superset_collections_daily",
+                            "datasource_type": "table",
+                            "id": 2,
+                            "params": "{\"adhoc_filters\": [], \"annotation_layers\": [], \"color_scheme\": \"supersetColors\", \"comparison_type\": \"values\", \"datasource\": \"58__table\", \"extra_form_data\": {}, \"forecastInterval\": 0.8, \"forecastPeriods\": 10, \"granularity_sqla\": \"bucket\", \"groupby\": [\"slug\"], \"label_colors\": {}, \"legendOrientation\": \"top\", \"legendType\": \"scroll\", \"limit\": null, \"markerEnabled\": false, \"markerSize\": 6, \"metrics\": [{\"aggregate\": \"MAX\", \"column\": {\"column_name\": \"volume\", \"description\": null, \"expression\": null, \"filterable\": true, \"groupby\": true, \"id\": 484, \"is_dttm\": false, \"python_date_format\": null, \"type\": \"BIGINT\", \"type_generic\": 0, \"verbose_name\": null}, \"expressionType\": \"SIMPLE\", \"hasCustomLabel\": true, \"isNew\": false, \"label\": \"volume (count)\", \"optionName\": \"metric_66524dq3u4v_2rwzatdl6df\", \"sqlExpression\": null}], \"order_desc\": true, \"rich_tooltip\": true, \"row_limit\": null, \"show_legend\": true, \"slice_id\": 85, \"time_grain_sqla\": null, \"time_range\": \"No filter\", \"time_range_endpoints\": [\"inclusive\", \"exclusive\"], \"tooltipTimeFormat\": \"smart_date\", \"truncateYAxis\": true, \"url_params\": {}, \"viz_type\": \"echarts_timeseries_smooth\", \"x_axis_time_format\": \"smart_date\", \"yAxisTitle\": \"Count\", \"y_axis_bounds\": [null, null], \"y_axis_format\": \"SMART_NUMBER\", \"zoomable\": true, \"remote_id\": 2, \"datasource_name\": \"superset_collections_daily\", \"schema\": \"public\", \"database_name\": \"NFT Starter Kit\", \"import_time\": 1635362957}",
+                            "query_context": "{\"datasource\":{\"id\":58,\"type\":\"table\"},\"force\":false,\"queries\":[{\"time_range\":\"No filter\",\"granularity\":\"bucket\",\"filters\":[],\"extras\":{\"time_grain_sqla\":null,\"time_range_endpoints\":[\"inclusive\",\"exclusive\"],\"having\":\"\",\"having_druid\":[],\"where\":\"\"},\"applied_time_extras\":{},\"columns\":[\"slug\"],\"metrics\":[{\"expressionType\":\"SIMPLE\",\"column\":{\"id\":484,\"column_name\":\"volume\",\"verbose_name\":null,\"description\":null,\"expression\":null,\"filterable\":true,\"groupby\":true,\"is_dttm\":false,\"type\":\"BIGINT\",\"type_generic\":0,\"python_date_format\":null},\"aggregate\":\"MAX\",\"sqlExpression\":null,\"isNew\":false,\"hasCustomLabel\":true,\"label\":\"volume (count)\",\"optionName\":\"metric_66524dq3u4v_2rwzatdl6df\"}],\"orderby\":[[{\"expressionType\":\"SIMPLE\",\"column\":{\"id\":484,\"column_name\":\"volume\",\"verbose_name\":null,\"description\":null,\"expression\":null,\"filterable\":true,\"groupby\":true,\"is_dttm\":false,\"type\":\"BIGINT\",\"type_generic\":0,\"python_date_format\":null},\"aggregate\":\"MAX\",\"sqlExpression\":null,\"isNew\":false,\"hasCustomLabel\":true,\"label\":\"volume (count)\",\"optionName\":\"metric_66524dq3u4v_2rwzatdl6df\"},false]],\"annotation_layers\":[],\"timeseries_limit\":0,\"order_desc\":true,\"url_params\":{},\"custom_params\":{},\"custom_form_data\":{},\"is_timeseries\":true,\"time_offsets\":[],\"post_processing\":[null,null,null,{\"operation\":\"pivot\",\"options\":{\"index\":[\"__timestamp\"],\"columns\":[\"slug\"],\"aggregates\":{\"volume (count)\":{\"operator\":\"mean\"}},\"drop_missing_columns\":false}},null,null]}],\"result_format\":\"json\",\"result_type\":\"full\"}",
+                            "slice_name": "Daily number of NFT transactions",
+                            "viz_type": "echarts_timeseries_smooth"
+                        }
+                    },
+                    {
+                        "__Slice__": {
+                            "cache_timeout": null,
+                            "datasource_name": "public.superset_collections_daily",
+                            "datasource_type": "table",
+                            "id": 3,
+                            "params": "{\"adhoc_filters\": [], \"annotation_layers\": [], \"color_scheme\": \"supersetColors\", \"comparison_type\": \"values\", \"datasource\": \"58__table\", \"extra_form_data\": {}, \"forecastInterval\": 0.8, \"forecastPeriods\": 10, \"granularity_sqla\": \"bucket\", \"groupby\": [\"slug\"], \"label_colors\": {}, \"legendOrientation\": \"top\", \"legendType\": \"scroll\", \"limit\": null, \"logAxis\": true, \"markerEnabled\": false, \"markerSize\": 6, \"metrics\": [{\"aggregate\": \"MAX\", \"column\": {\"column_name\": \"mean_price\", \"description\": null, \"expression\": null, \"filterable\": true, \"groupby\": true, \"id\": 482, \"is_dttm\": false, \"python_date_format\": null, \"type\": \"DOUBLE PRECISION\", \"type_generic\": 0, \"verbose_name\": null}, \"expressionType\": \"SIMPLE\", \"hasCustomLabel\": true, \"isNew\": false, \"label\": \"mean price\", \"optionName\": \"metric_z7osafqfy1d_j3rb8zur8i\", \"sqlExpression\": null}, {\"aggregate\": \"MAX\", \"column\": {\"column_name\": \"median_price\", \"description\": null, \"expression\": null, \"filterable\": true, \"groupby\": true, \"id\": 483, \"is_dttm\": false, \"python_date_format\": null, \"type\": \"DOUBLE PRECISION\", \"type_generic\": 0, \"verbose_name\": null}, \"expressionType\": \"SIMPLE\", \"hasCustomLabel\": true, \"isNew\": false, \"label\": \"median price\", \"optionName\": \"metric_91mht3v6er9_r41nkxu9wvm\", \"sqlExpression\": null}], \"minorSplitLine\": false, \"order_desc\": false, \"rich_tooltip\": true, \"row_limit\": null, \"show_legend\": true, \"show_value\": false, \"slice_id\": 86, \"stack\": false, \"time_grain_sqla\": null, \"time_range\": \"No filter\", \"time_range_endpoints\": [\"inclusive\", \"exclusive\"], \"tooltipTimeFormat\": \"smart_date\", \"truncateYAxis\": true, \"url_params\": {}, \"viz_type\": \"echarts_timeseries_smooth\", \"xAxisLabelRotation\": 0, \"x_axis_time_format\": \"smart_date\", \"yAxisTitle\": \"ETH price\", \"y_axis_bounds\": [null, null], \"y_axis_format\": \"SMART_NUMBER\", \"zoomable\": true, \"remote_id\": 3, \"datasource_name\": \"superset_collections_daily\", \"schema\": \"public\", \"database_name\": \"NFT Starter Kit\", \"import_time\": 1635362957}",
+                            "query_context": "{\"datasource\":{\"id\":58,\"type\":\"table\"},\"force\":false,\"queries\":[{\"time_range\":\"No filter\",\"granularity\":\"bucket\",\"filters\":[],\"extras\":{\"time_grain_sqla\":null,\"time_range_endpoints\":[\"inclusive\",\"exclusive\"],\"having\":\"\",\"having_druid\":[],\"where\":\"\"},\"applied_time_extras\":{},\"columns\":[\"slug\"],\"metrics\":[{\"aggregate\":\"MAX\",\"column\":{\"column_name\":\"mean_price\",\"description\":null,\"expression\":null,\"filterable\":true,\"groupby\":true,\"id\":482,\"is_dttm\":false,\"python_date_format\":null,\"type\":\"DOUBLE PRECISION\",\"type_generic\":0,\"verbose_name\":null},\"expressionType\":\"SIMPLE\",\"hasCustomLabel\":true,\"isNew\":false,\"label\":\"mean price\",\"optionName\":\"metric_z7osafqfy1d_j3rb8zur8i\",\"sqlExpression\":null},{\"aggregate\":\"MAX\",\"column\":{\"column_name\":\"median_price\",\"description\":null,\"expression\":null,\"filterable\":true,\"groupby\":true,\"id\":483,\"is_dttm\":false,\"python_date_format\":null,\"type\":\"DOUBLE PRECISION\",\"type_generic\":0,\"verbose_name\":null},\"expressionType\":\"SIMPLE\",\"hasCustomLabel\":true,\"isNew\":false,\"label\":\"median price\",\"optionName\":\"metric_91mht3v6er9_r41nkxu9wvm\",\"sqlExpression\":null}],\"orderby\":[[{\"aggregate\":\"MAX\",\"column\":{\"column_name\":\"mean_price\",\"description\":null,\"expression\":null,\"filterable\":true,\"groupby\":true,\"id\":482,\"is_dttm\":false,\"python_date_format\":null,\"type\":\"DOUBLE PRECISION\",\"type_generic\":0,\"verbose_name\":null},\"expressionType\":\"SIMPLE\",\"hasCustomLabel\":true,\"isNew\":false,\"label\":\"mean price\",\"optionName\":\"metric_z7osafqfy1d_j3rb8zur8i\",\"sqlExpression\":null},true]],\"annotation_layers\":[],\"timeseries_limit\":0,\"order_desc\":false,\"url_params\":{},\"custom_params\":{},\"custom_form_data\":{},\"is_timeseries\":true,\"time_offsets\":[],\"post_processing\":[null,null,null,{\"operation\":\"pivot\",\"options\":{\"index\":[\"__timestamp\"],\"columns\":[\"slug\"],\"aggregates\":{\"mean price\":{\"operator\":\"mean\"},\"median price\":{\"operator\":\"mean\"}},\"drop_missing_columns\":false}},null,null]}],\"result_format\":\"json\",\"result_type\":\"full\"}",
+                            "slice_name": "Mean and median sales price",
+                            "viz_type": "echarts_timeseries_smooth"
+                        }
+                    },
+                    {
+                        "__Slice__": {
+                            "cache_timeout": null,
+                            "datasource_name": "public.superset_collections_daily",
+                            "datasource_type": "table",
+                            "id": 4,
+                            "params": "{\"adhoc_filters\": [], \"datasource\": \"58__table\", \"date_filter\": true, \"extra_form_data\": {}, \"filter_configs\": [{\"asc\": true, \"clearable\": false, \"column\": \"slug\", \"defaultValue\": \"cryptopunks\", \"key\": \"tzbMUv0-b\", \"label\": \"Collection slug\", \"metric\": \"count\", \"multiple\": true, \"searchAllOptions\": false}], \"granularity_sqla\": \"bucket\", \"slice_id\": 88, \"time_grain_sqla\": null, \"time_range\": \"No filter\", \"time_range_endpoints\": [\"inclusive\", \"exclusive\"], \"url_params\": {}, \"viz_type\": \"filter_box\", \"remote_id\": 4, \"datasource_name\": \"superset_collections_daily\", \"schema\": \"public\", \"database_name\": \"NFT Starter Kit\", \"import_time\": 1635362957}",
+                            "query_context": "{\"datasource\":{\"id\":58,\"type\":\"table\"},\"force\":false,\"queries\":[{\"time_range\":\"No filter\",\"granularity\":\"bucket\",\"filters\":[],\"extras\":{\"time_grain_sqla\":null,\"time_range_endpoints\":[\"inclusive\",\"exclusive\"],\"having\":\"\",\"having_druid\":[],\"where\":\"\"},\"applied_time_extras\":{},\"columns\":[],\"metrics\":[],\"annotation_layers\":[],\"timeseries_limit\":0,\"order_desc\":true,\"url_params\":{},\"custom_params\":{},\"custom_form_data\":{}}],\"result_format\":\"json\",\"result_type\":\"full\"}",
+                            "slice_name": "Collection filter",
+                            "viz_type": "filter_box"
+                        }
+                    },
+                    {
+                        "__Slice__": {
+                            "cache_timeout": null,
+                            "datasource_name": "public.superset_collections_daily",
+                            "datasource_type": "table",
+                            "id": 5,
+                            "params": "{\"adhoc_filters\": [], \"all_columns\": [\"nft_image\", \"max_price\", \"bucket\"], \"color_pn\": true, \"datasource\": \"58__table\", \"extra_form_data\": {}, \"granularity_sqla\": \"bucket\", \"groupby\": [], \"order_by_cols\": [\"[\\\"max_price\\\", false]\"], \"order_desc\": true, \"percent_metrics\": [], \"query_mode\": \"raw\", \"row_limit\": null, \"server_page_length\": 10, \"show_cell_bars\": true, \"show_totals\": false, \"slice_id\": 89, \"table_timestamp_format\": \"smart_date\", \"time_grain_sqla\": null, \"time_range\": \"No filter\", \"time_range_endpoints\": [\"inclusive\", \"exclusive\"], \"url_params\": {}, \"viz_type\": \"table\", \"remote_id\": 5, \"datasource_name\": \"superset_collections_daily\", \"schema\": \"public\", \"database_name\": \"NFT Starter Kit\", \"import_time\": 1635362957}",
+                            "query_context": "{\"datasource\":{\"id\":58,\"type\":\"table\"},\"force\":false,\"queries\":[{\"time_range\":\"No filter\",\"granularity\":\"bucket\",\"filters\":[],\"extras\":{\"time_grain_sqla\":null,\"time_range_endpoints\":[\"inclusive\",\"exclusive\"],\"having\":\"\",\"having_druid\":[],\"where\":\"\"},\"applied_time_extras\":{},\"columns\":[\"nft_image\",\"max_price\",\"bucket\"],\"orderby\":[[\"max_price\",false]],\"annotation_layers\":[],\"timeseries_limit\":0,\"order_desc\":true,\"url_params\":{},\"custom_params\":{},\"custom_form_data\":{},\"post_processing\":[]}],\"result_format\":\"json\",\"result_type\":\"full\"}",
+                            "slice_name": "Most expensive items sold in this period",
+                            "viz_type": "table"
+                        }
+                    },
+                    {
+                        "__Slice__": {
+                            "cache_timeout": null,
+                            "datasource_name": "public.Most often traded collections?",
+                            "datasource_type": "table",
+                            "id": 6,
+                            "params": "{\"adhoc_filters\": [], \"all_columns\": [\"slug\", \"total_volume\", \"total_volume_eth\"], \"color_pn\": true, \"datasource\": \"55__table\", \"extra_form_data\": {}, \"groupby\": [], \"metrics\": [], \"order_by_cols\": [], \"order_desc\": true, \"percent_metrics\": [], \"query_mode\": \"raw\", \"row_limit\": 50, \"server_page_length\": 10, \"show_cell_bars\": true, \"table_timestamp_format\": \"smart_date\", \"time_grain_sqla\": \"P1D\", \"time_range\": \"No filter\", \"time_range_endpoints\": [\"inclusive\", \"exclusive\"], \"viz_type\": \"table\", \"remote_id\": 6, \"datasource_name\": \"Most often traded collections?\", \"schema\": \"public\", \"database_name\": \"NFT Starter Kit\", \"import_time\": 1635362957}",
+                            "query_context": "{\"datasource\":{\"id\":55,\"type\":\"table\"},\"force\":false,\"queries\":[{\"time_range\":\"No filter\",\"filters\":[],\"extras\":{\"time_grain_sqla\":\"P1D\",\"time_range_endpoints\":[\"inclusive\",\"exclusive\"],\"having\":\"\",\"having_druid\":[],\"where\":\"\"},\"applied_time_extras\":{},\"columns\":[\"slug\",\"total_volume\",\"total_volume_eth\"],\"orderby\":[],\"annotation_layers\":[],\"row_limit\":50,\"timeseries_limit\":0,\"order_desc\":true,\"url_params\":{},\"custom_params\":{},\"custom_form_data\":{},\"post_processing\":[]}],\"result_format\":\"json\",\"result_type\":\"full\"}",
+                            "slice_name": "Collections with the highest volume",
+                            "viz_type": "table"
+                        }
+                    }
+                ],
+                "slug": null
+            }
+        },
+        {
+            "__Dashboard__": {
+                "css": "",
+                "dashboard_title": "Assets",
+                "description": null,
+                "json_metadata": "{\"timed_refresh_immune_slices\": [], \"expanded_slices\": {}, \"refresh_frequency\": 0, \"default_filters\": \"{\\\"91\\\": {\\\"asset_id\\\": [\\\"16856942\\\"], \\\"__time_range\\\": \\\"No filter\\\"}}\", \"color_scheme\": null, \"filter_scopes\": {\"91\": {\"asset_id\": {\"scope\": [\"ROOT_ID\"], \"immune\": [93]}, \"__time_range\": {\"scope\": [\"ROOT_ID\"], \"immune\": [93]}}}, \"remote_id\": 8}",
+                "position_json": "{\"CHART-F2ZdAR9LkH\":{\"children\":[],\"id\":\"CHART-F2ZdAR9LkH\",\"meta\":{\"chartId\":93,\"height\":50,\"sliceName\":\"Most often traded NFTs in a day\",\"uuid\":\"a7064a5b-66d1-4599-9e10-e8c5d35b088e\",\"width\":3},\"parents\":[\"ROOT_ID\",\"GRID_ID\",\"ROW-Uzq5Gzn7p2\"],\"type\":\"CHART\"},\"CHART-OA40AUOER7\":{\"children\":[],\"id\":\"CHART-OA40AUOER7\",\"meta\":{\"chartId\":94,\"height\":50,\"sliceName\":\"Daily volume (ETH)\",\"uuid\":\"507120f2-6e73-4db9-8e23-9abc3c5e8f4f\",\"width\":4},\"parents\":[\"ROOT_ID\",\"GRID_ID\",\"ROW-Q83PYzD1tj\"],\"type\":\"CHART\"},\"CHART-hCFDf4gN2r\":{\"children\":[],\"id\":\"CHART-hCFDf4gN2r\",\"meta\":{\"chartId\":91,\"height\":50,\"sliceName\":\"Assets filter\",\"uuid\":\"81ac87aa-6dd2-45f2-bb5b-3341c459c691\",\"width\":4},\"parents\":[\"ROOT_ID\",\"GRID_ID\",\"ROW-Uzq5Gzn7p2\"],\"type\":\"CHART\"},\"CHART-hwDq4KV7oH\":{\"children\":[],\"id\":\"CHART-hwDq4KV7oH\",\"meta\":{\"chartId\":96,\"height\":50,\"sliceName\":\"Average and median price\",\"uuid\":\"1bd54ab0-8b14-44cc-abb5-9568d6cd3fa0\",\"width\":4},\"parents\":[\"ROOT_ID\",\"GRID_ID\",\"ROW-Q83PYzD1tj\"],\"type\":\"CHART\"},\"CHART-y2jODmvTly\":{\"children\":[],\"id\":\"CHART-y2jODmvTly\",\"meta\":{\"chartId\":92,\"height\":50,\"sliceName\":\"About the NFT\",\"uuid\":\"30a583b3-7b40-4392-9ff2-231f0b27a28d\",\"width\":5},\"parents\":[\"ROOT_ID\",\"GRID_ID\",\"ROW-Uzq5Gzn7p2\"],\"type\":\"CHART\"},\"CHART-yRf7pCHveJ\":{\"children\":[],\"id\":\"CHART-yRf7pCHveJ\",\"meta\":{\"chartId\":95,\"height\":50,\"sliceName\":\"Daily volume (trade count)\",\"uuid\":\"f806543d-433d-420a-99c0-0bd8977b80ed\",\"width\":4},\"parents\":[\"ROOT_ID\",\"GRID_ID\",\"ROW-Q83PYzD1tj\"],\"type\":\"CHART\"},\"DASHBOARD_VERSION_KEY\":\"v2\",\"GRID_ID\":{\"children\":[\"ROW-Uzq5Gzn7p2\",\"ROW-Q83PYzD1tj\"],\"id\":\"GRID_ID\",\"parents\":[\"ROOT_ID\"],\"type\":\"GRID\"},\"HEADER_ID\":{\"id\":\"HEADER_ID\",\"meta\":{\"text\":\"Assets\"},\"type\":\"HEADER\"},\"ROOT_ID\":{\"children\":[\"GRID_ID\"],\"id\":\"ROOT_ID\",\"type\":\"ROOT\"},\"ROW-Q83PYzD1tj\":{\"children\":[\"CHART-OA40AUOER7\",\"CHART-yRf7pCHveJ\",\"CHART-hwDq4KV7oH\"],\"id\":\"ROW-Q83PYzD1tj\",\"meta\":{\"background\":\"BACKGROUND_TRANSPARENT\"},\"parents\":[\"ROOT_ID\",\"GRID_ID\"],\"type\":\"ROW\"},\"ROW-Uzq5Gzn7p2\":{\"children\":[\"CHART-hCFDf4gN2r\",\"CHART-y2jODmvTly\",\"CHART-F2ZdAR9LkH\"],\"id\":\"ROW-Uzq5Gzn7p2\",\"meta\":{\"background\":\"BACKGROUND_TRANSPARENT\"},\"parents\":[\"ROOT_ID\",\"GRID_ID\"],\"type\":\"ROW\"}}",
+                "slices": [
+                    {
+                        "__Slice__": {
+                            "cache_timeout": null,
+                            "datasource_name": "public.Assets caggs + info",
+                            "datasource_type": "table",
+                            "id": 91,
+                            "params": "{\"adhoc_filters\": [], \"datasource\": \"53__table\", \"date_filter\": true, \"extra_form_data\": {}, \"filter_configs\": [{\"asc\": true, \"clearable\": false, \"column\": \"asset_id\", \"defaultValue\": \"48159964\", \"key\": \"e_vjzje3-\", \"multiple\": true, \"searchAllOptions\": false}], \"granularity_sqla\": \"bucket\", \"slice_id\": 91, \"time_grain_sqla\": null, \"time_range\": \"No filter\", \"time_range_endpoints\": [\"inclusive\", \"exclusive\"], \"url_params\": {}, \"viz_type\": \"filter_box\", \"remote_id\": 91, \"datasource_name\": \"Assets caggs + info\", \"schema\": \"public\", \"database_name\": \"NFT Starter Kit\"}",
+                            "query_context": "{\"datasource\":{\"id\":53,\"type\":\"table\"},\"force\":false,\"queries\":[{\"time_range\":\"No filter\",\"granularity\":\"bucket\",\"filters\":[],\"extras\":{\"time_grain_sqla\":null,\"time_range_endpoints\":[\"inclusive\",\"exclusive\"],\"having\":\"\",\"having_druid\":[],\"where\":\"\"},\"applied_time_extras\":{},\"columns\":[],\"metrics\":[],\"annotation_layers\":[],\"timeseries_limit\":0,\"order_desc\":true,\"url_params\":{},\"custom_params\":{},\"custom_form_data\":{}}],\"result_format\":\"json\",\"result_type\":\"full\"}",
+                            "slice_name": "Assets filter",
+                            "viz_type": "filter_box"
+                        }
+                    },
+                    {
+                        "__Slice__": {
+                            "cache_timeout": null,
+                            "datasource_name": "public.superset_assets_daily",
+                            "datasource_type": "table",
+                            "id": 92,
+                            "params": "{\"adhoc_filters\": [], \"all_columns\": [\"nft_image\", \"asset_id\", \"asset_name\", \"mean_price\"], \"color_pn\": true, \"datasource\": \"57__table\", \"extra_form_data\": {}, \"granularity_sqla\": \"bucket\", \"groupby\": [], \"order_by_cols\": [], \"order_desc\": true, \"percent_metrics\": [], \"query_mode\": \"raw\", \"row_limit\": null, \"server_page_length\": 10, \"show_cell_bars\": true, \"slice_id\": 92, \"table_timestamp_format\": \"smart_date\", \"time_grain_sqla\": null, \"time_range\": \"No filter\", \"time_range_endpoints\": [\"inclusive\", \"exclusive\"], \"url_params\": {}, \"viz_type\": \"table\", \"remote_id\": 92, \"datasource_name\": \"superset_assets_daily\", \"schema\": \"public\", \"database_name\": \"NFT Starter Kit\"}",
+                            "query_context": "{\"datasource\":{\"id\":57,\"type\":\"table\"},\"force\":false,\"queries\":[{\"time_range\":\"No filter\",\"granularity\":\"bucket\",\"filters\":[],\"extras\":{\"time_grain_sqla\":null,\"time_range_endpoints\":[\"inclusive\",\"exclusive\"],\"having\":\"\",\"having_druid\":[],\"where\":\"\"},\"applied_time_extras\":{},\"columns\":[\"nft_image\",\"asset_id\",\"asset_name\",\"mean_price\"],\"orderby\":[],\"annotation_layers\":[],\"timeseries_limit\":0,\"order_desc\":true,\"url_params\":{},\"custom_params\":{},\"custom_form_data\":{},\"post_processing\":[]}],\"result_format\":\"json\",\"result_type\":\"full\"}",
+                            "slice_name": "About the NFT",
+                            "viz_type": "table"
+                        }
+                    },
+                    {
+                        "__Slice__": {
+                            "cache_timeout": null,
+                            "datasource_name": "public.Assets caggs + info",
+                            "datasource_type": "table",
+                            "id": 93,
+                            "params": "{\"adhoc_filters\": [{\"clause\": \"WHERE\", \"comparator\": \"100\", \"expressionType\": \"SIMPLE\", \"filterOptionName\": \"filter_vhftssqr638_3q2ss0yoxfj\", \"isExtra\": false, \"isNew\": false, \"operator\": \">\", \"operatorId\": \"GREATER_THAN\", \"sqlExpression\": null, \"subject\": \"volume\"}], \"all_columns\": [\"asset_name\", \"asset_id\", \"volume\"], \"color_pn\": true, \"datasource\": \"53__table\", \"extra_form_data\": {}, \"granularity_sqla\": \"bucket\", \"groupby\": [], \"order_by_cols\": [], \"order_desc\": true, \"percent_metrics\": [], \"query_mode\": \"raw\", \"row_limit\": 50, \"server_page_length\": 10, \"show_cell_bars\": true, \"slice_id\": 93, \"table_timestamp_format\": \"smart_date\", \"time_grain_sqla\": null, \"time_range\": \"No filter\", \"time_range_endpoints\": [\"inclusive\", \"exclusive\"], \"url_params\": {}, \"viz_type\": \"table\", \"remote_id\": 93, \"datasource_name\": \"Assets caggs + info\", \"schema\": \"public\", \"database_name\": \"NFT Starter Kit\"}",
+                            "query_context": "{\"datasource\":{\"id\":53,\"type\":\"table\"},\"force\":false,\"queries\":[{\"time_range\":\"No filter\",\"granularity\":\"bucket\",\"filters\":[{\"col\":\"volume\",\"op\":\">\",\"val\":\"500\"}],\"extras\":{\"time_grain_sqla\":null,\"time_range_endpoints\":[\"inclusive\",\"exclusive\"],\"having\":\"\",\"having_druid\":[],\"where\":\"\"},\"applied_time_extras\":{},\"columns\":[\"asset_name\",\"asset_id\",\"volume\"],\"orderby\":[],\"annotation_layers\":[],\"row_limit\":50,\"timeseries_limit\":0,\"order_desc\":true,\"url_params\":{},\"custom_params\":{},\"custom_form_data\":{},\"post_processing\":[]}],\"result_format\":\"json\",\"result_type\":\"full\"}",
+                            "slice_name": "Most often traded NFTs in a day",
+                            "viz_type": "table"
+                        }
+                    },
+                    {
+                        "__Slice__": {
+                            "cache_timeout": null,
+                            "datasource_name": "public.superset_assets_daily",
+                            "datasource_type": "table",
+                            "id": 94,
+                            "params": "{\"adhoc_filters\": [], \"annotation_layers\": [], \"color_scheme\": \"supersetColors\", \"comparison_type\": \"values\", \"datasource\": \"57__table\", \"extra_form_data\": {}, \"forecastInterval\": 0.8, \"forecastPeriods\": 10, \"granularity_sqla\": \"bucket\", \"groupby\": [], \"label_colors\": {}, \"legendOrientation\": \"top\", \"legendType\": \"scroll\", \"limit\": null, \"markerSize\": 6, \"metrics\": [{\"aggregate\": \"MAX\", \"column\": {\"column_name\": \"volume_eth\", \"description\": null, \"expression\": null, \"filterable\": true, \"groupby\": true, \"id\": 474, \"is_dttm\": false, \"python_date_format\": null, \"type\": \"DOUBLE PRECISION\", \"type_generic\": 0, \"verbose_name\": null}, \"expressionType\": \"SIMPLE\", \"hasCustomLabel\": false, \"isNew\": false, \"label\": \"MAX(volume_eth)\", \"optionName\": \"metric_2ifreem376h_y5myj73mz7g\", \"sqlExpression\": null}], \"order_desc\": true, \"rich_tooltip\": true, \"row_limit\": null, \"show_legend\": true, \"slice_id\": 94, \"time_grain_sqla\": null, \"time_range\": \"No filter\", \"time_range_endpoints\": [\"inclusive\", \"exclusive\"], \"tooltipTimeFormat\": \"smart_date\", \"truncateYAxis\": true, \"url_params\": {}, \"viz_type\": \"echarts_timeseries_smooth\", \"x_axis_time_format\": \"smart_date\", \"y_axis_bounds\": [null, null], \"y_axis_format\": \"SMART_NUMBER\", \"zoomable\": true, \"remote_id\": 94, \"datasource_name\": \"superset_assets_daily\", \"schema\": \"public\", \"database_name\": \"NFT Starter Kit\"}",
+                            "query_context": "{\"datasource\":{\"id\":57,\"type\":\"table\"},\"force\":false,\"queries\":[{\"time_range\":\"No filter\",\"granularity\":\"bucket\",\"filters\":[],\"extras\":{\"time_grain_sqla\":null,\"time_range_endpoints\":[\"inclusive\",\"exclusive\"],\"having\":\"\",\"having_druid\":[],\"where\":\"\"},\"applied_time_extras\":{},\"columns\":[],\"metrics\":[{\"expressionType\":\"SIMPLE\",\"column\":{\"id\":474,\"column_name\":\"volume_eth\",\"verbose_name\":null,\"description\":null,\"expression\":null,\"filterable\":true,\"groupby\":true,\"is_dttm\":false,\"type\":\"DOUBLE PRECISION\",\"type_generic\":0,\"python_date_format\":null},\"aggregate\":\"MAX\",\"sqlExpression\":null,\"isNew\":false,\"hasCustomLabel\":false,\"label\":\"MAX(volume_eth)\",\"optionName\":\"metric_2ifreem376h_y5myj73mz7g\"}],\"orderby\":[[{\"expressionType\":\"SIMPLE\",\"column\":{\"id\":474,\"column_name\":\"volume_eth\",\"verbose_name\":null,\"description\":null,\"expression\":null,\"filterable\":true,\"groupby\":true,\"is_dttm\":false,\"type\":\"DOUBLE PRECISION\",\"type_generic\":0,\"python_date_format\":null},\"aggregate\":\"MAX\",\"sqlExpression\":null,\"isNew\":false,\"hasCustomLabel\":false,\"label\":\"MAX(volume_eth)\",\"optionName\":\"metric_2ifreem376h_y5myj73mz7g\"},false]],\"annotation_layers\":[],\"timeseries_limit\":0,\"order_desc\":true,\"url_params\":{},\"custom_params\":{},\"custom_form_data\":{},\"is_timeseries\":true,\"time_offsets\":[],\"post_processing\":[null,null,null,{\"operation\":\"pivot\",\"options\":{\"index\":[\"__timestamp\"],\"columns\":[],\"aggregates\":{\"MAX(volume_eth)\":{\"operator\":\"mean\"}},\"drop_missing_columns\":false}},null,null]}],\"result_format\":\"json\",\"result_type\":\"full\"}",
+                            "slice_name": "Daily volume (ETH)",
+                            "viz_type": "echarts_timeseries_smooth"
+                        }
+                    },
+                    {
+                        "__Slice__": {
+                            "cache_timeout": null,
+                            "datasource_name": "public.superset_assets_daily",
+                            "datasource_type": "table",
+                            "id": 95,
+                            "params": "{\"adhoc_filters\": [], \"annotation_layers\": [], \"color_scheme\": \"supersetColors\", \"comparison_type\": \"values\", \"datasource\": \"57__table\", \"extra_form_data\": {}, \"forecastInterval\": 0.8, \"forecastPeriods\": 10, \"granularity_sqla\": \"bucket\", \"groupby\": [\"asset_id\", \"asset_name\"], \"label_colors\": {}, \"legendOrientation\": \"top\", \"legendType\": \"scroll\", \"limit\": null, \"markerSize\": 6, \"metrics\": [{\"aggregate\": \"MAX\", \"column\": {\"column_name\": \"volume\", \"description\": null, \"expression\": null, \"filterable\": true, \"groupby\": true, \"id\": 473, \"is_dttm\": false, \"python_date_format\": null, \"type\": \"BIGINT\", \"type_generic\": 0, \"verbose_name\": null}, \"expressionType\": \"SIMPLE\", \"hasCustomLabel\": false, \"isNew\": false, \"label\": \"MAX(volume)\", \"optionName\": \"metric_03tsl3ljb2el_shai8cnyjn\", \"sqlExpression\": null}], \"order_desc\": true, \"rich_tooltip\": true, \"row_limit\": null, \"show_legend\": true, \"slice_id\": 95, \"time_grain_sqla\": null, \"time_range\": \"No filter\", \"time_range_endpoints\": [\"inclusive\", \"exclusive\"], \"tooltipTimeFormat\": \"smart_date\", \"truncateYAxis\": true, \"url_params\": {}, \"viz_type\": \"echarts_timeseries_smooth\", \"x_axis_time_format\": \"smart_date\", \"y_axis_bounds\": [null, null], \"y_axis_format\": \"SMART_NUMBER\", \"zoomable\": true, \"remote_id\": 95, \"datasource_name\": \"superset_assets_daily\", \"schema\": \"public\", \"database_name\": \"NFT Starter Kit\"}",
+                            "query_context": "{\"datasource\":{\"id\":57,\"type\":\"table\"},\"force\":false,\"queries\":[{\"time_range\":\"No filter\",\"granularity\":\"bucket\",\"filters\":[],\"extras\":{\"time_grain_sqla\":null,\"time_range_endpoints\":[\"inclusive\",\"exclusive\"],\"having\":\"\",\"having_druid\":[],\"where\":\"\"},\"applied_time_extras\":{},\"columns\":[\"asset_id\",\"asset_name\"],\"metrics\":[{\"expressionType\":\"SIMPLE\",\"column\":{\"id\":473,\"column_name\":\"volume\",\"verbose_name\":null,\"description\":null,\"expression\":null,\"filterable\":true,\"groupby\":true,\"is_dttm\":false,\"type\":\"BIGINT\",\"type_generic\":0,\"python_date_format\":null},\"aggregate\":\"MAX\",\"sqlExpression\":null,\"isNew\":false,\"hasCustomLabel\":false,\"label\":\"MAX(volume)\",\"optionName\":\"metric_03tsl3ljb2el_shai8cnyjn\"}],\"orderby\":[[{\"expressionType\":\"SIMPLE\",\"column\":{\"id\":473,\"column_name\":\"volume\",\"verbose_name\":null,\"description\":null,\"expression\":null,\"filterable\":true,\"groupby\":true,\"is_dttm\":false,\"type\":\"BIGINT\",\"type_generic\":0,\"python_date_format\":null},\"aggregate\":\"MAX\",\"sqlExpression\":null,\"isNew\":false,\"hasCustomLabel\":false,\"label\":\"MAX(volume)\",\"optionName\":\"metric_03tsl3ljb2el_shai8cnyjn\"},false]],\"annotation_layers\":[],\"timeseries_limit\":0,\"order_desc\":true,\"url_params\":{},\"custom_params\":{},\"custom_form_data\":{},\"is_timeseries\":true,\"time_offsets\":[],\"post_processing\":[null,null,null,{\"operation\":\"pivot\",\"options\":{\"index\":[\"__timestamp\"],\"columns\":[\"asset_id\",\"asset_name\"],\"aggregates\":{\"MAX(volume)\":{\"operator\":\"mean\"}},\"drop_missing_columns\":false}},null,null]}],\"result_format\":\"json\",\"result_type\":\"full\"}",
+                            "slice_name": "Daily volume (trade count)",
+                            "viz_type": "echarts_timeseries_smooth"
+                        }
+                    },
+                    {
+                        "__Slice__": {
+                            "cache_timeout": null,
+                            "datasource_name": "public.Assets caggs + info",
+                            "datasource_type": "table",
+                            "id": 96,
+                            "params": "{\"adhoc_filters\": [], \"annotation_layers\": [], \"color_scheme\": \"supersetColors\", \"comparison_type\": \"values\", \"datasource\": \"53__table\", \"extra_form_data\": {}, \"forecastInterval\": 0.8, \"forecastPeriods\": 10, \"granularity_sqla\": \"bucket\", \"groupby\": [\"asset_id\", \"asset_name\"], \"label_colors\": {}, \"legendOrientation\": \"top\", \"legendType\": \"scroll\", \"limit\": null, \"markerSize\": 6, \"metrics\": [{\"aggregate\": \"MAX\", \"column\": {\"column_name\": \"mean_price\", \"description\": null, \"expression\": null, \"filterable\": true, \"groupby\": true, \"id\": 448, \"is_dttm\": false, \"python_date_format\": null, \"type\": \"FLOAT\", \"type_generic\": 0, \"verbose_name\": null}, \"expressionType\": \"SIMPLE\", \"hasCustomLabel\": false, \"isNew\": false, \"label\": \"MAX(mean_price)\", \"optionName\": \"metric_1ms0gvufvcc_zy9cfsob6i\", \"sqlExpression\": null}, {\"aggregate\": \"MAX\", \"column\": {\"column_name\": \"median_price\", \"description\": null, \"expression\": null, \"filterable\": true, \"groupby\": true, \"id\": 449, \"is_dttm\": false, \"python_date_format\": null, \"type\": \"FLOAT\", \"type_generic\": 0, \"verbose_name\": null}, \"expressionType\": \"SIMPLE\", \"hasCustomLabel\": false, \"isNew\": false, \"label\": \"MAX(median_price)\", \"optionName\": \"metric_4530rmv59hl_r5lastejhq\", \"sqlExpression\": null}], \"order_desc\": true, \"rich_tooltip\": true, \"row_limit\": null, \"show_legend\": true, \"time_grain_sqla\": null, \"time_range\": \"No filter\", \"time_range_endpoints\": [\"inclusive\", \"exclusive\"], \"tooltipTimeFormat\": \"smart_date\", \"truncateYAxis\": true, \"url_params\": {}, \"viz_type\": \"echarts_timeseries_smooth\", \"x_axis_time_format\": \"smart_date\", \"y_axis_bounds\": [null, null], \"y_axis_format\": \"SMART_NUMBER\", \"zoomable\": true, \"remote_id\": 96, \"datasource_name\": \"Assets caggs + info\", \"schema\": \"public\", \"database_name\": \"NFT Starter Kit\"}",
+                            "query_context": "{\"datasource\":{\"id\":53,\"type\":\"table\"},\"force\":false,\"queries\":[{\"time_range\":\"No filter\",\"granularity\":\"bucket\",\"filters\":[],\"extras\":{\"time_grain_sqla\":null,\"time_range_endpoints\":[\"inclusive\",\"exclusive\"],\"having\":\"\",\"having_druid\":[],\"where\":\"\"},\"applied_time_extras\":{},\"columns\":[\"asset_id\",\"asset_name\"],\"metrics\":[{\"expressionType\":\"SIMPLE\",\"column\":{\"id\":448,\"column_name\":\"mean_price\",\"verbose_name\":null,\"description\":null,\"expression\":null,\"filterable\":true,\"groupby\":true,\"is_dttm\":false,\"type\":\"FLOAT\",\"type_generic\":0,\"python_date_format\":null},\"aggregate\":\"MAX\",\"sqlExpression\":null,\"isNew\":false,\"hasCustomLabel\":false,\"label\":\"MAX(mean_price)\",\"optionName\":\"metric_1ms0gvufvcc_zy9cfsob6i\"},{\"expressionType\":\"SIMPLE\",\"column\":{\"id\":449,\"column_name\":\"median_price\",\"verbose_name\":null,\"description\":null,\"expression\":null,\"filterable\":true,\"groupby\":true,\"is_dttm\":false,\"type\":\"FLOAT\",\"type_generic\":0,\"python_date_format\":null},\"aggregate\":\"MAX\",\"sqlExpression\":null,\"isNew\":false,\"hasCustomLabel\":false,\"label\":\"MAX(median_price)\",\"optionName\":\"metric_4530rmv59hl_r5lastejhq\"}],\"orderby\":[[{\"expressionType\":\"SIMPLE\",\"column\":{\"id\":448,\"column_name\":\"mean_price\",\"verbose_name\":null,\"description\":null,\"expression\":null,\"filterable\":true,\"groupby\":true,\"is_dttm\":false,\"type\":\"FLOAT\",\"type_generic\":0,\"python_date_format\":null},\"aggregate\":\"MAX\",\"sqlExpression\":null,\"isNew\":false,\"hasCustomLabel\":false,\"label\":\"MAX(mean_price)\",\"optionName\":\"metric_1ms0gvufvcc_zy9cfsob6i\"},false]],\"annotation_layers\":[],\"timeseries_limit\":0,\"order_desc\":true,\"url_params\":{},\"custom_params\":{},\"custom_form_data\":{},\"is_timeseries\":true,\"time_offsets\":[],\"post_processing\":[null,null,null,{\"operation\":\"pivot\",\"options\":{\"index\":[\"__timestamp\"],\"columns\":[\"asset_id\",\"asset_name\"],\"aggregates\":{\"MAX(mean_price)\":{\"operator\":\"mean\"},\"MAX(median_price)\":{\"operator\":\"mean\"}},\"drop_missing_columns\":false}},null,null]}],\"result_format\":\"json\",\"result_type\":\"full\"}",
+                            "slice_name": "Average and median price",
+                            "viz_type": "echarts_timeseries_smooth"
+                        }
+                    }
+                ],
+                "slug": null
+            }
+        }
+    ],
+    "datasources": [
+        {
+            "__SqlaTable__": {
+                "cache_timeout": null,
+                "columns": [
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-25T21:31:48"
+                            },
+                            "column_name": "bucket",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-25T21:31:48"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 467,
+                            "is_active": true,
+                            "is_dttm": true,
+                            "python_date_format": null,
+                            "table_id": 57,
+                            "type": "TIMESTAMP WITH TIME ZONE",
+                            "uuid": "f268742c-5824-4e4d-8b38-af95704d27ea",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-25T21:31:48"
+                            },
+                            "column_name": "asset_id",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-25T21:31:48"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 468,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 57,
+                            "type": "BIGINT",
+                            "uuid": "9f2c5b1d-0a15-4b85-849a-8873c145c604",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-25T21:31:48"
+                            },
+                            "column_name": "asset_name",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-25T21:31:48"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 469,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 57,
+                            "type": "TEXT",
+                            "uuid": "0385d812-317a-4bb9-aa2c-4deac609a403",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-25T21:31:48"
+                            },
+                            "column_name": "collection_slug",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-25T21:31:48"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 470,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 57,
+                            "type": "TEXT",
+                            "uuid": "7b63b123-d7bc-45a3-9fed-9d3099b4bb04",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-25T21:31:48"
+                            },
+                            "column_name": "mean_price",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-25T21:31:48"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 471,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 57,
+                            "type": "DOUBLE PRECISION",
+                            "uuid": "7e7e90cc-96c3-455f-81dc-0b0f69063b86",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-25T21:31:48"
+                            },
+                            "column_name": "median_price",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-25T21:31:48"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 472,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 57,
+                            "type": "DOUBLE PRECISION",
+                            "uuid": "465b8588-c4eb-4c96-90b0-991b2e354519",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-25T21:31:48"
+                            },
+                            "column_name": "volume",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-25T21:31:48"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 473,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 57,
+                            "type": "BIGINT",
+                            "uuid": "1d6ea865-dbe4-47f0-acc0-6e5ab4bb89a3",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-25T21:31:48"
+                            },
+                            "column_name": "volume_eth",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-25T21:31:48"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 474,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 57,
+                            "type": "DOUBLE PRECISION",
+                            "uuid": "85622f46-15e0-4ee3-ac33-e0dee261ef68",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-25T21:31:48"
+                            },
+                            "column_name": "open_price",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-25T21:31:48"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 475,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 57,
+                            "type": "DOUBLE PRECISION",
+                            "uuid": "ccb83c1f-77f6-435d-bb46-802d194d7829",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-25T21:31:48"
+                            },
+                            "column_name": "high_price",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-25T21:31:48"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 476,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 57,
+                            "type": "DOUBLE PRECISION",
+                            "uuid": "e63b7cd2-5ee7-4090-aa16-2e5139ff2e06",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-25T21:31:48"
+                            },
+                            "column_name": "low_price",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-25T21:31:48"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 477,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 57,
+                            "type": "DOUBLE PRECISION",
+                            "uuid": "ddc1a96b-f7d6-4064-8f01-c2eda1c94845",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-25T21:31:48"
+                            },
+                            "column_name": "close_price",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-25T21:31:48"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 478,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 57,
+                            "type": "DOUBLE PRECISION",
+                            "uuid": "5b5bb8e4-6c08-49e9-abb0-956ff82a3a4e",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-25T21:31:48"
+                            },
+                            "column_name": "nft_image",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-25T21:31:48"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 479,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 57,
+                            "type": "TEXT",
+                            "uuid": "7b1d4d64-c290-4611-a792-0e7fab31cd37",
+                            "verbose_name": null
+                        }
+                    }
+                ],
+                "database_id": 4,
+                "default_endpoint": null,
+                "description": null,
+                "extra": null,
+                "fetch_values_predicate": null,
+                "filter_select_enabled": false,
+                "main_dttm_col": "bucket",
+                "metrics": [
+                    {
+                        "__SqlMetric__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-25T21:31:48"
+                            },
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-25T21:31:48"
+                            },
+                            "d3format": null,
+                            "description": null,
+                            "expression": "COUNT(*)",
+                            "extra": null,
+                            "id": 57,
+                            "metric_name": "count",
+                            "metric_type": "count",
+                            "table_id": 57,
+                            "uuid": "1ed4583a-29c8-4d05-8752-86af46faa471",
+                            "verbose_name": "COUNT(*)",
+                            "warning_text": null
+                        }
+                    }
+                ],
+                "offset": 0,
+                "params": "{\"remote_id\": 57, \"database_name\": \"NFT Starter Kit\"}",
+                "schema": "public",
+                "sql": null,
+                "table_name": "superset_assets_daily",
+                "template_params": null
+            }
+        },
+        {
+            "__SqlaTable__": {
+                "cache_timeout": null,
+                "columns": [
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-25T17:24:43"
+                            },
+                            "column_name": "slug",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-21T18:49:29"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 462,
+                            "is_active": null,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 55,
+                            "type": "STRING",
+                            "uuid": "4ea2ba69-2cee-4c6e-9df7-49d6b74470c2",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-25T17:24:43"
+                            },
+                            "column_name": "total_volume",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-21T18:49:29"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 463,
+                            "is_active": null,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 55,
+                            "type": null,
+                            "uuid": "85a307df-0920-49bf-aab9-a3f6d5420815",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-25T17:24:43"
+                            },
+                            "column_name": "total_volume_eth",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-21T18:49:29"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 464,
+                            "is_active": null,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 55,
+                            "type": "FLOAT",
+                            "uuid": "6bd1355d-2208-49fd-bb39-ea8b01943b72",
+                            "verbose_name": null
+                        }
+                    }
+                ],
+                "database_id": 4,
+                "default_endpoint": null,
+                "description": null,
+                "extra": null,
+                "fetch_values_predicate": null,
+                "filter_select_enabled": false,
+                "main_dttm_col": null,
+                "metrics": [
+                    {
+                        "__SqlMetric__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-25T17:24:43"
+                            },
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-21T18:49:29"
+                            },
+                            "d3format": null,
+                            "description": null,
+                            "expression": "count(*)",
+                            "extra": "{\"warning_markdown\":\"\"}",
+                            "id": 55,
+                            "metric_name": "count",
+                            "metric_type": null,
+                            "table_id": 55,
+                            "uuid": "87ed5fc0-5f04-47f8-b83a-c505fde40e7b",
+                            "verbose_name": null,
+                            "warning_text": null
+                        }
+                    }
+                ],
+                "offset": 0,
+                "params": "{\"remote_id\": 55, \"database_name\": \"NFT Starter Kit\"}",
+                "schema": "public",
+                "sql": "/* Most often traded collections? */\nSELECT\nslug,\nSUM(volume) total_volume,\nSUM(volume_eth) total_volume_eth\nFROM collections_daily cagg\nINNER JOIN collections c ON cagg.collection_id = c.id\nINNER JOIN assets a ON a.id = cagg.most_expensive_nft_id\nGROUP BY cagg.collection_id, slug\nORDER BY total_volume DESC",
+                "table_name": "Most often traded collections?",
+                "template_params": null
+            }
+        },
+        {
+            "__SqlaTable__": {
+                "cache_timeout": null,
+                "columns": [
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-26T10:39:17"
+                            },
+                            "column_name": "bucket",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-26T10:39:17"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 480,
+                            "is_active": true,
+                            "is_dttm": true,
+                            "python_date_format": null,
+                            "table_id": 58,
+                            "type": "TIMESTAMP WITH TIME ZONE",
+                            "uuid": "f40e9c97-f08b-4d48-981f-2e67850e7658",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-26T10:39:17"
+                            },
+                            "column_name": "slug",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-26T10:39:17"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 481,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 58,
+                            "type": "TEXT",
+                            "uuid": "3618612b-4107-4086-bd33-6ea96edcffec",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-26T10:39:17"
+                            },
+                            "column_name": "mean_price",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-26T10:39:17"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 482,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 58,
+                            "type": "DOUBLE PRECISION",
+                            "uuid": "19bead9b-79b7-4256-a22d-a1a7798befd4",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-26T10:39:17"
+                            },
+                            "column_name": "median_price",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-26T10:39:17"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 483,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 58,
+                            "type": "DOUBLE PRECISION",
+                            "uuid": "a14a79c3-b3fb-455a-bd40-46d8f8d773a4",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-26T10:39:17"
+                            },
+                            "column_name": "volume",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-26T10:39:17"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 484,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 58,
+                            "type": "BIGINT",
+                            "uuid": "8ca0c5ca-809b-46dc-86dd-eb707d303754",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-26T10:39:17"
+                            },
+                            "column_name": "volume_eth",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-26T10:39:17"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 485,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 58,
+                            "type": "DOUBLE PRECISION",
+                            "uuid": "96126ac5-ca1b-4a95-9af3-02e35104574b",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-26T10:39:17"
+                            },
+                            "column_name": "most_expensive_nft_id",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-26T10:39:17"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 486,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 58,
+                            "type": "BIGINT",
+                            "uuid": "1a95134c-0a4e-41d2-a6ad-29c976264579",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-26T10:39:17"
+                            },
+                            "column_name": "max_price",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-26T10:39:17"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 487,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 58,
+                            "type": "DOUBLE PRECISION",
+                            "uuid": "40825c89-0b23-47f4-aa88-482d88a36e55",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-26T10:39:17"
+                            },
+                            "column_name": "nft_image",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-26T10:39:17"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 488,
+                            "is_active": true,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 58,
+                            "type": "TEXT",
+                            "uuid": "5f456064-277e-4bc7-876a-d2d2ffc570e4",
+                            "verbose_name": null
+                        }
+                    }
+                ],
+                "database_id": 4,
+                "default_endpoint": null,
+                "description": null,
+                "extra": null,
+                "fetch_values_predicate": null,
+                "filter_select_enabled": false,
+                "main_dttm_col": "bucket",
+                "metrics": [
+                    {
+                        "__SqlMetric__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-26T10:39:17"
+                            },
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-26T10:39:17"
+                            },
+                            "d3format": null,
+                            "description": null,
+                            "expression": "COUNT(*)",
+                            "extra": null,
+                            "id": 58,
+                            "metric_name": "count",
+                            "metric_type": "count",
+                            "table_id": 58,
+                            "uuid": "554f29e5-e58e-4de1-a625-66fb83b8b375",
+                            "verbose_name": "COUNT(*)",
+                            "warning_text": null
+                        }
+                    }
+                ],
+                "offset": 0,
+                "params": "{\"remote_id\": 58, \"database_name\": \"NFT Starter Kit\"}",
+                "schema": "public",
+                "sql": null,
+                "table_name": "superset_collections_daily",
+                "template_params": null
+            }
+        },
+        {
+            "__SqlaTable__": {
+                "cache_timeout": null,
+                "columns": [
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-24T00:10:45"
+                            },
+                            "column_name": "bucket",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-20T13:09:44"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 444,
+                            "is_active": null,
+                            "is_dttm": true,
+                            "python_date_format": null,
+                            "table_id": 53,
+                            "type": "DATETIME",
+                            "uuid": "85a42eec-60ec-4fd7-8dc3-d07f9f8a3854",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-24T00:10:45"
+                            },
+                            "column_name": "asset_id",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-20T13:09:44"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 445,
+                            "is_active": null,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 53,
+                            "type": "INT",
+                            "uuid": "b93264e9-7e8f-4059-9605-e0f106573d6a",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-24T00:10:45"
+                            },
+                            "column_name": "asset_name",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-20T13:09:44"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 446,
+                            "is_active": null,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 53,
+                            "type": "STRING",
+                            "uuid": "bf4ec4ca-d53a-47df-9400-f12173e62938",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-24T00:10:45"
+                            },
+                            "column_name": "collection_slug",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-20T13:09:44"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 447,
+                            "is_active": null,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 53,
+                            "type": "STRING",
+                            "uuid": "d1d33770-9ba2-4662-ac11-2653fe5efbd2",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-24T00:10:45"
+                            },
+                            "column_name": "mean_price",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-20T13:09:44"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 448,
+                            "is_active": null,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 53,
+                            "type": "FLOAT",
+                            "uuid": "4083eb41-eb8f-4bb4-9947-90793610fc9b",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-24T00:10:45"
+                            },
+                            "column_name": "median_price",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-20T13:09:44"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 449,
+                            "is_active": null,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 53,
+                            "type": "FLOAT",
+                            "uuid": "bcb698a4-32da-4f5c-8022-1f5dcaa60ba4",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-24T00:10:45"
+                            },
+                            "column_name": "volume",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-20T13:09:44"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 450,
+                            "is_active": null,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 53,
+                            "type": "INT",
+                            "uuid": "3086bbd7-b696-4db2-a325-34958d786cc2",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-24T00:10:45"
+                            },
+                            "column_name": "volume_eth",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-20T13:09:44"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 451,
+                            "is_active": null,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 53,
+                            "type": "FLOAT",
+                            "uuid": "090adb96-db87-49be-a0f5-08a229d92b16",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-24T00:10:45"
+                            },
+                            "column_name": "open_price",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-20T13:09:44"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 452,
+                            "is_active": null,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 53,
+                            "type": "FLOAT",
+                            "uuid": "ebdcc66d-7b00-4d16-b51c-64e8911c1b1b",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-24T00:10:45"
+                            },
+                            "column_name": "high_price",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-20T13:09:44"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 453,
+                            "is_active": null,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 53,
+                            "type": "FLOAT",
+                            "uuid": "3cf398f2-2e39-4914-9663-d51f4da86a61",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-24T00:10:45"
+                            },
+                            "column_name": "low_price",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-20T13:09:44"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 454,
+                            "is_active": null,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 53,
+                            "type": "FLOAT",
+                            "uuid": "6ee9c770-88aa-47c4-87ef-dc99a04c5184",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-24T00:10:45"
+                            },
+                            "column_name": "close_price",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-20T13:09:44"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 455,
+                            "is_active": null,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 53,
+                            "type": "FLOAT",
+                            "uuid": "e72f5a7b-b03e-4b15-8a37-61b2430d0fd3",
+                            "verbose_name": null
+                        }
+                    },
+                    {
+                        "__TableColumn__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-24T00:10:45"
+                            },
+                            "column_name": "nft_image",
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-20T13:09:44"
+                            },
+                            "description": null,
+                            "expression": null,
+                            "filterable": true,
+                            "groupby": true,
+                            "id": 456,
+                            "is_active": null,
+                            "is_dttm": false,
+                            "python_date_format": null,
+                            "table_id": 53,
+                            "type": "STRING",
+                            "uuid": "e28aae63-44cb-46cb-ac13-d0c4c1a4e84b",
+                            "verbose_name": null
+                        }
+                    }
+                ],
+                "database_id": 4,
+                "default_endpoint": null,
+                "description": null,
+                "extra": null,
+                "fetch_values_predicate": null,
+                "filter_select_enabled": false,
+                "main_dttm_col": null,
+                "metrics": [
+                    {
+                        "__SqlMetric__": {
+                            "changed_by_fk": 1,
+                            "changed_on": {
+                                "__datetime__": "2021-10-24T00:10:45"
+                            },
+                            "created_by_fk": 1,
+                            "created_on": {
+                                "__datetime__": "2021-10-20T13:09:44"
+                            },
+                            "d3format": null,
+                            "description": null,
+                            "expression": "count(*)",
+                            "extra": "{\"warning_markdown\":\"\"}",
+                            "id": 53,
+                            "metric_name": "count",
+                            "metric_type": null,
+                            "table_id": 53,
+                            "uuid": "3766ed42-773d-438a-94ad-899a1eb35f57",
+                            "verbose_name": null,
+                            "warning_text": null
+                        }
+                    }
+                ],
+                "offset": 0,
+                "params": "{\"remote_id\": 53, \"database_name\": \"NFT Starter Kit\"}",
+                "schema": "public",
+                "sql": "/* Assets caggs + info */\nSELECT\nbucket,\na.id AS asset_id,\na.name AS asset_name,\nc.slug AS collection_slug, \nmean_price,\nmedian_price,\nvolume,\nvolume_eth,\nopen_price,\nhigh_price,\nlow_price,\nclose_price,\n'<a href=\"'|| a.url ||'\"><img src='|| a.img_url || ' height=150></a>' AS nft_image\nFROM assets_daily cagg \nINNER JOIN collections c ON cagg.collection_id = c.id\nINNER JOIN assets a ON a.id = cagg.asset_id",
+                "table_name": "Assets caggs + info",
+                "template_params": null
+            }
+        }
+    ]
+}

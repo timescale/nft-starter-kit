@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  timescaledb:
+    build: database/.
+    ports:
+      - "6543:5432"
+  nft-starter-kit:
+    build: dashboard/.
+    ports:
+      - "8088:8088"
+
