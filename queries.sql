@@ -219,7 +219,7 @@ LIMIT 5
 /* Calculating 15-min mean and median sale prices of highest trade count NFT on 2021-10-17 */
 WITH one_day AS (
     SELECT time, asset_id, total_price FROM nft_sales
-    WHERE DATE(time) = '2021-10-17' AND payment_symbol = 'ETH'
+    WHERE time BETWEEN '2021-10-06 00:00:00' AND '2021-10-06 23:59:59' AND payment_symbol = 'ETH'
 )
 SELECT time_bucket('30 min', time) AS bucket,
 assets.name AS nft,
