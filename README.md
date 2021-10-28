@@ -73,7 +73,7 @@ straight from the OpenSea API, follow these steps to configure the ingestion scr
 * [TimescaleDB installed][install-ts]
 * Schema has been set up using the [`schema.sql`][schema] script.
 
-## Instructions
+### Instructions
 
 1. Go to the root folder of the project:
     ```bash
