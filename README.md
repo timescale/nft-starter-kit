@@ -12,7 +12,7 @@ This project intends to help you get started with NFT sales analysis using Times
 
 
 ## Get started
-Clone the nft-starter-kit repository:
+Clone the `nft-starter-kit` repository:
 ```bash
 git clone https://github.com/timescale/nft-starter-kit.git
 cd nft-starter-kit
@@ -38,7 +38,7 @@ there's no other services using those ports before starting the installation pro
 
 ### Instructions
 
-1. Run `docker-compose up --build` in the /pre-built-dashboards folder:
+1. Run `docker-compose up --build` in the `/pre-built-dashboards` folder:
     ```bash
     cd pre-built-dashboards
     docker-compose up --build
@@ -64,23 +64,25 @@ there's no other services using those ports before starting the installation pro
     Assets dashboard: http://0.0.0.0:8088/superset/dashboard/2 
 
 ## Running the data ingestion script
-If you'd like to ingest data into your database (be it locally, or in Timescale Cloud) 
+If you'd like to ingest data into your database (be it a local TimescaleDB, or in Timescale Cloud) 
 straight from the OpenSea API, follow these steps to configure the ingestion script:
 
 ### Prerequisites
 * [TimescaleDB installed][install-ts]
 * Schema has been set up using the [`schema.sql`][schema] script.
 
+## Instructions
+
 1. Go to the root folder of the project:
-    ```python
-    bash cd nft-starter-kit
+    ```bash
+    cd nft-starter-kit
     ```
 1.  Create a new Python virtual environment and install the requirements:
     ```bash
     virtualenv env && source env/bin/activate
     pip install -r requirements.txt
     ```
-1.  Replace the parameters in the `config.py` file:
+1.  Replace the parameters in the [`config.py`][config] file:
     ```python
     DB_NAME="tsdb"
     HOST="YOUR_HOST_URL"
@@ -94,7 +96,7 @@ straight from the OpenSea API, follow these steps to configure the ingestion scr
     ```python
     python opensea_ingest.py
     ```
-    This will start ingesting data in batches, 300 rows at a time:
+    This will start ingesting data in batches, ~300 rows at a time:
     ```bash
     Start ingesting data between 2021-10-01 00:00:00+00:00 and 2021-10-06 23:59:59+00:00
     ---
@@ -109,7 +111,7 @@ straight from the OpenSea API, follow these steps to configure the ingestion scr
 
 
 ## Ingest the sample data
-If you don't want to spend waiting until a decent amount of data is ingested, 
+If you don't want to spend time waiting until a decent amount of data is ingested, 
 you can just use our sample dataset which contains 500K+ sale transactions from 
 OpenSea (this sample was used for the Superset dashboard as well) 
 
@@ -118,7 +120,7 @@ OpenSea (this sample was used for the Superset dashboard as well)
 * PSQL ([installation guide](https://blog.timescale.com/blog/how-to-install-psql-on-mac-ubuntu-debian-windows/))
 
 ### Instructions
-1.  Go to the folder with the sample CSV files:
+1.  Go to the folder with the sample CSV files (or you can also [download them from here][sample-dw]):
     ```bash
     cd pre-built-dashboards/database/data
     ```
@@ -135,6 +137,10 @@ OpenSea (this sample was used for the Superset dashboard as well)
     \copy assets FROM assets.csv CSV HEADER;
     \copy nft_sales FROM nft_sales.csv CSV HEADER;
     ```  
+1.  Try running [some queries][queries] on your database:
+    ```sql
+    SELECT count(*), MIN(time) AS min_date, MAX(time) AS max_date FROM nft_sales 
+    ```
 
 
 [schema]: https://github.com/timescale/nft-starter-kit/blob/master/schema.sql
@@ -144,3 +150,5 @@ OpenSea (this sample was used for the Superset dashboard as well)
 [local-ts]: https://github.com/timescale/nft-starter-kit/tree/master/pre-built-dashboards/database
 [dash]: https://github.com/timescale/nft-starter-kit/tree/master/pre-built-dashboards/dashboard
 [queries]: https://github.com/timescale/nft-starter-kit/blob/master/queries.sql
+[config]: https://github.com/timescale/nft-starter-kit/blob/master/config.py
+[sample-dw]: https://assets.timescale.com/docs/downloads/nft_sample.zip
