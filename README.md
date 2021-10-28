@@ -1,7 +1,7 @@
 # Timescale NFT Starter Kit
 This project intends to help you get started with NFT sales analysis.
 
-Project components:
+## Project components
 
 * Data ingestion script, which collects historical data from OpenSea and ingests it into TimescaleDB
 * Sample dataset, to get started quickly, if you don't want to wait too much time ingesting data
