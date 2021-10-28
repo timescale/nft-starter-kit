@@ -31,6 +31,7 @@ there's no other services using those ports before starting the installation pro
 
 * [Docker](https://docs.docker.com/get-docker/)
 * [Docker compose](https://docs.docker.com/compose/install/)
+
     Verify that both are installed:
     ```bash
     docker --version && docker-compose --version
