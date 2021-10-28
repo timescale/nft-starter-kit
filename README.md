@@ -1,5 +1,5 @@
 # Timescale NFT Starter Kit
-This project intends to help you get started with NFT sales analysis using TimescaleDB.
+This project intends to help you get started with non-fungible token (NFT) sales analysis using TimescaleDB.
 
 ## Project components
 
