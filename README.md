@@ -3,12 +3,12 @@ This project intends to help you get started with NFT sales analysis.
 
 ## Project components
 
-* Data ingestion script, which collects historical data from OpenSea and ingests it into TimescaleDB
-* Sample dataset, to get started quickly, if you don't want to wait too much time ingesting data
-* Schema for storing NFT sales, assets, collections, and accounts
-* Local TimescaleDB database, pre-loaded with sample NFT data
-* Pre-built dashboards and charts in Apache Superset and Grafana for visualizing your data analysis
-* Queries to use as a starting point for your own analysis
+* [Data ingestion script][ingest], which collects historical data from OpenSea and ingests it into TimescaleDB
+* [Sample dataset][sample], to get started quickly, if you don't want to wait too much time ingesting data
+* [Schema][schema] for storing NFT sales, assets, collections, and accounts
+* [Local TimescaleDB instance][local-ts], pre-loaded with sample NFT data
+* [Pre-built dashboards][dash] and charts in Apache Superset and Grafana for visualizing your data analysis
+* [Queries][queries] to use as a starting point for your own analysis
 
 
 ## Get started
@@ -139,3 +139,8 @@ OpenSea (this sample was used for the Superset dashboard as well)
 
 [schema]: https://github.com/timescale/nft-starter-kit/blob/master/schema.sql
 [install-ts]: https://docs.timescale.com/timescaledb/latest/how-to-guides/install-timescaledb/#install-timescaledb
+[ingest]: https://github.com/timescale/nft-starter-kit/blob/master/opensea_ingest.py
+[sample]: https://github.com/timescale/nft-starter-kit/tree/master/pre-built-dashboards/database/data
+[local-ts]: https://github.com/timescale/nft-starter-kit/tree/master/pre-built-dashboards/database
+[dash]: https://github.com/timescale/nft-starter-kit/tree/master/pre-built-dashboards/dashboard
+[queries]: https://github.com/timescale/nft-starter-kit/blob/master/queries.sql
