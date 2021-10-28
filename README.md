@@ -69,6 +69,7 @@ If you'd like to ingest data into your database (be it a local TimescaleDB, or i
 straight from the OpenSea API, follow these steps to configure the ingestion script:
 
 ### Prerequisites
+* Python 3
 * [TimescaleDB installed][install-ts]
 * Schema has been set up using the [`schema.sql`][schema] script.
 
