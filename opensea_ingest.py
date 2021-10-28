@@ -323,7 +323,7 @@ conn = psycopg2.connect(database=config.DB_NAME,
                         port=config.DB_PORT)
 
 # insert OpenSea data from a defined time period
-# all transactions will be insterted between the start_date and end_date timestamps
+# all transactions will be inserted between the start_date and end_date timestamps
 start_date = datetime.fromisoformat(config.OPENSEA_START_DATE).replace(tzinfo=timezone.utc)
 end_date = datetime.fromisoformat(config.OPENSEA_END_DATE).replace(tzinfo=timezone.utc)
 start_ingest(start_date, end_date)
