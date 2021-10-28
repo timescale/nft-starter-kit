@@ -1,0 +1,1344 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "Dashboard to analyze an NFT collection from OpenSea",
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 1,
+  "iteration": 1635452449154,
+  "links": [],
+  "panels": [
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 10,
+      "panels": [
+        {
+          "datasource": null,
+          "description": "Daily total number of sales for assets in $collection",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 2,
+                "pointSize": 10,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "volume afrodroids-by-owo"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#FF9830",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "volume cryptokitties"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "yellow",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 1
+          },
+          "id": 8,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "single"
+            }
+          },
+          "targets": [
+            {
+              "format": "time_series",
+              "group": [],
+              "metricColumn": "none",
+              "rawQuery": true,
+              "rawSql": "SELECT\n  bucket AS \"time\",\n  slug, volume\nFROM collections_daily cagg\nINNER JOIN collections c ON cagg.collection_id = c.id\nWHERE slug IN ('$collection')\n  AND $__timeFilter(bucket) \nORDER BY 1;",
+              "refId": "A",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "mean_price"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "table": "assets_daily",
+              "timeColumn": "bucket",
+              "timeColumnType": "timestamp",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
+            }
+          ],
+          "title": "Daily total sales for $collection",
+          "type": "timeseries"
+        },
+        {
+          "datasource": null,
+          "description": "Daily total of ETH spent on purchasing assets in the $collection collection",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 2,
+                "pointSize": 10,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "volume afrodroids-by-owo"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#FF9830",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "volume_eth afrodroids-by-owo"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "yellow",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "volume_eth cryptokitties"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "green",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 1
+          },
+          "id": 13,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "single"
+            }
+          },
+          "targets": [
+            {
+              "format": "time_series",
+              "group": [],
+              "metricColumn": "none",
+              "rawQuery": true,
+              "rawSql": "SELECT\n  bucket AS \"time\",\n  slug, volume_eth\nFROM collections_daily cagg\nINNER JOIN collections c ON cagg.collection_id = c.id\nWHERE slug IN ('$collection')\n  AND $__timeFilter(bucket) \nORDER BY 1;",
+              "refId": "A",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "mean_price"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "table": "assets_daily",
+              "timeColumn": "bucket",
+              "timeColumnType": "timestamp",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
+            }
+          ],
+          "title": "Daily ETH volume for $collection",
+          "type": "timeseries"
+        },
+        {
+          "datasource": null,
+          "description": "Price in ETH of the most expensive NFT sold in $collection collection",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 3,
+                "pointSize": 10,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "price_ETH cryptokitties"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "dark-purple",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 0,
+            "y": 9
+          },
+          "id": 17,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "single"
+            }
+          },
+          "pluginVersion": "1.7.3",
+          "targets": [
+            {
+              "format": "time_series",
+              "group": [],
+              "hide": false,
+              "metricColumn": "none",
+              "rawQuery": true,
+              "rawSql": "SELECT\n  bucket AS \"time\", slug, max_price AS \"price_ETH\"\n  --most_expensive_nft AS most_expensive_nft_id\n  --, name AS most_expensive_nft_name\nFROM collections_daily cagg\nINNER JOIN collections c ON cagg.collection_id = c.id\nINNER JOIN assets a on a.id = cagg.most_expensive_nft_id\nWHERE slug IN ('$collection')\n  AND $__timeFilter(bucket) \nORDER BY 1;",
+              "refId": "B",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "mean_price"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "table": "collections_daily",
+              "timeColumn": "bucket",
+              "timeColumnType": "timestamp",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
+            }
+          ],
+          "title": "Price of most expensive items sold in $collection",
+          "type": "timeseries"
+        },
+        {
+          "datasource": null,
+          "description": "Daily chart of mean vs median price of an asset sold in $collection",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 2,
+                "pointSize": 10,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "volume afrodroids-by-owo"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "#FF9830",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "volume_eth afrodroids-by-owo"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "yellow",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "mean_price cryptokitties"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "orange",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 9
+          },
+          "id": 19,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "single"
+            }
+          },
+          "targets": [
+            {
+              "format": "time_series",
+              "group": [],
+              "metricColumn": "none",
+              "rawQuery": true,
+              "rawSql": "SELECT\n  bucket AS \"time\",\n  slug, mean_price, median_price\nFROM collections_daily cagg\nINNER JOIN collections c ON cagg.collection_id = c.id\nWHERE slug IN ('$collection')\n  AND $__timeFilter(bucket) \nORDER BY 1;",
+              "refId": "A",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "mean_price"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "table": "assets_daily",
+              "timeColumn": "bucket",
+              "timeColumnType": "timestamp",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
+            }
+          ],
+          "title": "Mean vs Median Price of Asset in $collection",
+          "type": "timeseries"
+        },
+        {
+          "datasource": null,
+          "description": "Name and price in ETH of the most expensive NFT sold in $collection collection for time period selected",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "auto",
+                "displayMode": "auto"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "short"
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "price_ETH"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 174
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "nft name"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 202
+                  }
+                ]
+              },
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "time"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": 212
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 7,
+            "w": 24,
+            "x": 0,
+            "y": 17
+          },
+          "id": 24,
+          "options": {
+            "showHeader": true,
+            "sortBy": []
+          },
+          "pluginVersion": "8.1.2",
+          "targets": [
+            {
+              "format": "table",
+              "group": [],
+              "hide": false,
+              "metricColumn": "none",
+              "rawQuery": true,
+              "rawSql": "SELECT bucket AS \"time\", a.name as \"nft name\", max_price AS \"price_ETH\", a.url AS \"url\"\n  --most_expensive_nft AS most_expensive_nft_id\n  --, name AS most_expensive_nft_name\nFROM collections_daily cagg\nINNER JOIN collections c ON cagg.collection_id = c.id\nINNER JOIN assets a on a.id = cagg.most_expensive_nft_id\nWHERE slug IN ('$collection')\n  AND $__timeFilter(bucket) \nORDER BY 1;",
+              "refId": "B",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "mean_price"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "table": "collections_daily",
+              "timeColumn": "bucket",
+              "timeColumnType": "timestamp",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Most expensive items sold during time period in $collection",
+          "type": "table"
+        }
+      ],
+      "title": "Single collection stats",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 1
+      },
+      "id": 12,
+      "panels": [
+        {
+          "datasource": null,
+          "description": "Collections with highest sale volume",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "auto",
+                "displayMode": "auto"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 12,
+            "x": 0,
+            "y": 2
+          },
+          "id": 2,
+          "options": {
+            "showHeader": true
+          },
+          "pluginVersion": "8.1.2",
+          "targets": [
+            {
+              "format": "table",
+              "group": [],
+              "hide": false,
+              "metricColumn": "none",
+              "rawQuery": true,
+              "rawSql": "SELECT \nslug,\nSUM(volume) total_volume,\nSUM(volume_eth) total_volume_eth\nFROM collections_daily cagg\nINNER JOIN collections c ON cagg.collection_id = c.id\nINNER JOIN assets a ON a.id = cagg.most_expensive_nft_id\nGROUP BY cagg.collection_id, slug\nORDER BY total_volume DESC\nLIMIT 20;",
+              "refId": "A",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "mean_price"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "table": "assets_daily",
+              "timeColumn": "bucket",
+              "timeColumnType": "timestamp",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
+            }
+          ],
+          "title": "Top 20 highest sale volume collections",
+          "transparent": true,
+          "type": "table"
+        },
+        {
+          "datasource": null,
+          "description": "Collections with highest sale volume",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "axisSoftMin": 0,
+                "fillOpacity": 80,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineWidth": 1
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "total_volume"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "light-green",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 12,
+            "x": 12,
+            "y": 2
+          },
+          "id": 18,
+          "options": {
+            "barWidth": 0.97,
+            "groupWidth": 0.7,
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom"
+            },
+            "orientation": "horizontal",
+            "showValue": "auto",
+            "stacking": "none",
+            "text": {},
+            "tooltip": {
+              "mode": "single"
+            }
+          },
+          "pluginVersion": "8.1.2",
+          "targets": [
+            {
+              "format": "table",
+              "group": [],
+              "hide": false,
+              "metricColumn": "none",
+              "rawQuery": true,
+              "rawSql": "SELECT \nslug,\nSUM(volume) total_volume\n-- SUM(volume_eth) total_volume_eth\nFROM collections_daily cagg\nINNER JOIN collections c ON cagg.collection_id = c.id\nINNER JOIN assets a ON a.id = cagg.most_expensive_nft_id\nGROUP BY cagg.collection_id, slug\nORDER BY total_volume DESC\nLIMIT 20;",
+              "refId": "A",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "mean_price"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "table": "assets_daily",
+              "timeColumn": "bucket",
+              "timeColumnType": "timestamp",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
+            }
+          ],
+          "title": "Top 20 highest ETH volume collections",
+          "transparent": true,
+          "type": "barchart"
+        },
+        {
+          "datasource": null,
+          "description": "Collections with highest ETH volume",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "auto",
+                "displayMode": "auto"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "slug"
+                },
+                "properties": [
+                  {
+                    "id": "custom.width",
+                    "value": null
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 12,
+            "x": 0,
+            "y": 11
+          },
+          "id": 20,
+          "options": {
+            "showHeader": true,
+            "sortBy": []
+          },
+          "pluginVersion": "8.1.2",
+          "targets": [
+            {
+              "format": "table",
+              "group": [],
+              "hide": false,
+              "metricColumn": "none",
+              "rawQuery": true,
+              "rawSql": "SELECT \nslug,\nSUM(volume_eth) total_volume_eth,\nSUM(volume) total_volume\nFROM collections_daily cagg\nINNER JOIN collections c ON cagg.collection_id = c.id\nINNER JOIN assets a ON a.id = cagg.most_expensive_nft_id\nGROUP BY cagg.collection_id, slug\nORDER BY total_volume_eth DESC\nLIMIT 20;",
+              "refId": "A",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "mean_price"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "table": "assets_daily",
+              "timeColumn": "bucket",
+              "timeColumnType": "timestamp",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
+            }
+          ],
+          "title": "Top 20 highest ETH volume collections",
+          "transparent": true,
+          "type": "table"
+        },
+        {
+          "datasource": null,
+          "description": "Daily sales of NFTs in the CryptoKitties collection",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "fixedColor": "yellow",
+                "mode": "fixed"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 20,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineStyle": {
+                  "fill": "solid"
+                },
+                "lineWidth": 2,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 9,
+            "w": 12,
+            "x": 12,
+            "y": 11
+          },
+          "id": 4,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "single"
+            }
+          },
+          "targets": [
+            {
+              "format": "time_series",
+              "group": [],
+              "metricColumn": "none",
+              "rawQuery": true,
+              "rawSql": "SELECT\n  bucket AS \"time\",\n  slug, volume\nFROM collections_daily cagg\nINNER JOIN collections c ON cagg.collection_id = c.id\nWHERE\n  $__timeFilter(bucket) AND slug = 'cryptokitties'\nORDER BY 1;",
+              "refId": "A",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "mean_price"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "table": "assets_daily",
+              "timeColumn": "bucket",
+              "timeColumnType": "timestamp",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
+            }
+          ],
+          "title": "Daily sales of Cryptokitties",
+          "type": "timeseries"
+        },
+        {
+          "datasource": null,
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 5,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": [
+              {
+                "matcher": {
+                  "id": "byName",
+                  "options": "volume afrodroids-by-owo"
+                },
+                "properties": [
+                  {
+                    "id": "color",
+                    "value": {
+                      "fixedColor": "purple",
+                      "mode": "fixed"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "gridPos": {
+            "h": 11,
+            "w": 12,
+            "x": 0,
+            "y": 20
+          },
+          "id": 6,
+          "options": {
+            "legend": {
+              "calcs": [],
+              "displayMode": "list",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "single"
+            }
+          },
+          "targets": [
+            {
+              "format": "time_series",
+              "group": [],
+              "metricColumn": "none",
+              "rawQuery": true,
+              "rawSql": "SELECT\n  bucket AS \"time\",\n  slug, volume\nFROM collections_daily cagg\nINNER JOIN collections c ON cagg.collection_id = c.id\nWHERE\n  $__timeFilter(bucket) AND slug IN ('cryptokitties', 'lazy-lions', 'afrodroids-by-owo')\nORDER BY 1;",
+              "refId": "A",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "mean_price"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "table": "assets_daily",
+              "timeColumn": "bucket",
+              "timeColumnType": "timestamp",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
+            }
+          ],
+          "title": "Daily sales of multiple NFT collections",
+          "type": "timeseries"
+        },
+        {
+          "datasource": null,
+          "description": "Trading Activity of Snoop Dogg for time-period chosen",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "custom": {
+                "align": "auto",
+                "displayMode": "auto"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 24,
+            "x": 0,
+            "y": 31
+          },
+          "id": 22,
+          "options": {
+            "showHeader": true
+          },
+          "pluginVersion": "8.1.2",
+          "targets": [
+            {
+              "format": "table",
+              "group": [],
+              "metricColumn": "none",
+              "rawQuery": true,
+              "rawSql": "WITH snoop_dogg AS (\n    SELECT id FROM accounts\n    WHERE address = '0xce90a7949bb78892f159f428d0dc23a8e3584d75'\n)\nSELECT\nCOUNT(*) AS trade_count,\nCOUNT(DISTINCT asset_id) AS nft_count,\nCOUNT(DISTINCT collection_id) AS collection_count,\nCOUNT(*) FILTER (WHERE seller_account = (SELECT id FROM snoop_dogg)) AS sale_count,\nCOUNT(*) FILTER (WHERE winner_account = (SELECT id FROM snoop_dogg)) AS buy_count,\nSUM(total_price) AS total_volume_eth,\nAVG(total_price) AS avg_price,\nMIN(total_price) AS min_price,\nMAX(total_price) AS max_price\nFROM nft_sales\nWHERE payment_symbol = 'ETH' AND ( seller_account = (SELECT id FROM snoop_dogg) OR winner_account = (SELECT id FROM snoop_dogg) )\nAND time > NOW()-INTERVAL '3 months'",
+              "refId": "A",
+              "select": [
+                [
+                  {
+                    "params": [
+                      "mean_price"
+                    ],
+                    "type": "column"
+                  }
+                ]
+              ],
+              "table": "assets_daily",
+              "timeColumn": "bucket",
+              "timeColumnType": "timestamp",
+              "where": [
+                {
+                  "name": "$__timeFilter",
+                  "params": [],
+                  "type": "macro"
+                }
+              ]
+            }
+          ],
+          "title": "Snoop Dogg's NFT Activity",
+          "type": "table"
+        }
+      ],
+      "title": "Simple queries",
+      "type": "row"
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 30,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "cryptokitties",
+          "value": "cryptokitties"
+        },
+        "datasource": null,
+        "definition": "SELECT slug from collections LIMIT 100;",
+        "description": "Slug name of an NFT Collection",
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "Collection Name",
+        "multi": false,
+        "name": "collection",
+        "options": [],
+        "query": "SELECT slug from collections LIMIT 100;",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "2021-09-30T04:00:00.000Z",
+    "to": "2021-10-08T03:59:59.000Z"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Timescale NFT Analysis - Collections",
+  "uid": "BOBQP9dnk",
+  "version": 27
+}
