@@ -1,15 +1,24 @@
 # Timescale NFT Starter Kit
-This project intends to help you get started with non-fungible token (NFT) sales analysis using TimescaleDB.
+The Timescale NFT Starter Kit is a step-by-step guide to get up and running with collecting, storing, analyzing and visualizing NFT data from [OpenSea](https://opensea.io), using PostgreSQL and TimescaleDB.
+
+The NFT Starter Kit will give you a foundation for analyzing NFT trends so that you can bring some data to your purchasing decisions, or just learn about the NFT space from a data-driven perspective. It also serves as a solid foundation for your more complex NFT analysis projects in the future.
+
+We recommend following along with the [NFT Starter Kit tutorial](https://docs.timescale.com/timescaledb/latest/tutorials/analyze-nft-data/) to get familar with the contents of this repository.
+
+For more information about the NFT Starter Kit, see the [announcement blog post](https://tsdb.co/nft-starter-kit-blog).
 
 ## Project components
 
 * [Data ingestion script][ingest], which collects historical data from OpenSea and ingests it into TimescaleDB
-* [Sample dataset][sample], to get started quickly, if you don't want to wait too much time ingesting data
+* [Sample dataset][sample], to get started quickly, if you'd prefer not to ingest live data
 * [Schema][schema] for storing NFT sales, assets, collections, and accounts
 * [Local TimescaleDB instance][local-ts], pre-loaded with sample NFT data
 * [Pre-built dashboards][dash] and charts in Apache Superset and Grafana for visualizing your data analysis
 * [Queries][queries] to use as a starting point for your own analysis
 
+## Earn a Time Travel Tiger NFT
+
+[Time Travel Tigers](https://opensea.io/collection/time-travel-tigers-by-timescale) is a collection of 20 hand-crafted NFTs featuring Timescale’s mascot: Eon the friendly tiger, as they travel through space and time, spreading the word about time-series data wearing various disguises to blend in. The first 20 people to complete the [NFT Starter Kit tutorial](https://docs.timescale.com/timescaledb/latest/tutorials/analyze-nft-data/) can earn a limited edition NFT from the collection, for free! Simply download the NFT Starter Kit, complete the tutorial and fill out this [form](https://tsdb.co/earn-eon-nft), and we’ll send one of the limited-edition Eon NFTs to your ETH address (at no cost to you!).
 
 ## Get started
 Clone the `nft-starter-kit` repository:
