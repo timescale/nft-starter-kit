@@ -13,7 +13,7 @@ For more information about the NFT Starter Kit, see the [announcement blog post]
 * [Sample dataset][sample], to get started quickly, if you'd prefer not to ingest live data
 * [Schema][schema] for storing NFT sales, assets, collections, and accounts
 * [Local TimescaleDB instance][local-ts], pre-loaded with sample NFT data
-* [Pre-built dashboards][dash] and charts in Apache Superset and Grafana for visualizing your data analysis
+* [Pre-built dashboards][dash] and charts in Apache Superset and [Grafana](https://github.com/timescale/nft-starter-kit/blob/master/pre-built-dashboards/grafana-collections.json) for visualizing your data analysis
 * [Queries][queries] to use as a starting point for your own analysis
 
 ## Earn a Time Travel Tiger NFT
