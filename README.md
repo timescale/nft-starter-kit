@@ -5,6 +5,8 @@ The NFT Starter Kit will give you a foundation for analyzing NFT trends so that 
 
 We recommend following along with the [NFT Starter Kit tutorial](https://docs.timescale.com/timescaledb/latest/tutorials/analyze-nft-data/) to get familar with the contents of this repository.
 
+For more information about the NFT Starter Kit, see the [announcement blog post](https://tsdb.co/nft-starter-kit-blog).
+
 ## Project components
 
 * [Data ingestion script][ingest], which collects historical data from OpenSea and ingests it into TimescaleDB
