@@ -94,7 +94,9 @@ def fetch_opensea_json(occurred_before, occurred_after=None, limit=300, offset=0
     if event_type != '':
         querystring['event_type'] = event_type
 
-    response = requests.request("GET", url, params=querystring)
+    apikey = config.OPENSEA_APIKEY
+    headers = None if apikey == "" else {"X-API-KEY": apikey}
+    response = requests.request("GET", url, headers=headers, params=querystring)
     
     # write the response to a JSON file
     if json_file != "":
