@@ -102,6 +102,7 @@ straight from the OpenSea API, follow these steps to configure the ingestion scr
     PORT="PORT_NUMBER"
     OPENSEA_START_DATE="2021-10-01T00:00:00" # example start date (UTC)
     OPENSEA_END_DATE="2021-10-06T23:59:59" # example end date (UTC)
+    OPENSEA_APIKEY="YOUR_OPENSEA_APIKEY" # need to request from OpenSea's docs
     ```
 1.  Run the Python script:
     ```python
