@@ -9,20 +9,17 @@ class NFTDatabase:
     
     def __init__(self, conn):
         self.conn = conn
-    
-    
-    def table_expensive_items(self):
-        sql = """
-            SELECT a.img_url AS nft_image
-            FROM collections_daily cagg
-            JOIN collections c ON cagg.collection_id = c.id
-            JOIN assets a ON a.id = cagg.most_expensive_nft_id
-            WHERE slug IN ('cryptopunks')
-            ORDER BY cagg.max_price DESC 
-            LIMIT 5"""
-        cursor = self.conn.cursor()
-        cursor.execute(sql)
-        return [img[0] for img in cursor.fetchall()] # pd.read_sql(sql, self.conn)
+        self.cursor = self.conn.cursor()
+        
+    def table_cagg_collections_daily(self, filters):
+        sql = f"""
+        SELECT bucket, slug, volume AS "volume (count)", volume_eth AS "volume (ETH)", max_price AS "max price", median_price AS "median price"
+        FROM streamlit_collections_daily cagg
+        INNER JOIN collections c ON c.id = cagg.collection_id
+        WHERE slug = '{filters['collection']}' AND bucket >= '{filters["start_date"]}' AND bucket <= '{filters["end_date"]}' 
+        ORDER BY bucket
+        """
+        return pd.read_sql(sql, self.conn)
 
     def table_most_expensive_items(self, filters):
         sql = F"""SELECT a.img_url, a.name, MAX(s.total_price) AS price, time AS sold FROM nft_sales s
@@ -30,42 +27,32 @@ class NFTDatabase:
                   INNER JOIN assets a ON s.asset_id = a.id 
                   WHERE payment_symbol = 'ETH' AND slug = '{filters['collection']}' AND time >= '{filters["start_date"]}' AND time <= '{filters["end_date"]}' 
                   GROUP BY a.id, a.name, a.img_url, time
-                  ORDER BY max_price DESC
+                  ORDER BY price DESC
                   LIMIT 5"""
         return pd.read_sql(sql, self.conn)       
-    
-    def line_daily_volume_count(self, filters):
-        sql = f"""SELECT bucket,
-                        slug,
-                        max(volume) AS "volume (count)"
-                FROM public.superset_collections_daily
-                WHERE slug = '{filters['collection']}' AND bucket >= '{filters["start_date"]}' AND bucket <= '{filters["end_date"]}' 
-                GROUP BY slug, bucket
-                ORDER BY bucket
-                LIMIT 50000;"""
-        df = pd.read_sql(sql, self.conn)
-        return px.line(df, x="bucket", y="volume (count)")
-    
-    def line_daily_volume_eth(self, filters):
-        sql = f"""SELECT bucket,
-                        slug,
-                        max(volume_eth) AS "volume (ETH)"
-                FROM public.superset_collections_daily
-                WHERE slug = '{filters['collection']}' AND bucket >= '{filters["start_date"]}' AND bucket <= '{filters["end_date"]}' 
-                GROUP BY slug, bucket
-                ORDER BY bucket
-                LIMIT 50000;"""
-        df = pd.read_sql(sql, self.conn)
-        return px.line(df, x="bucket", y="volume (ETH)")
 
-    def list_popular_collections(self):
-        sql = """
-        SELECT slug FROM collections_daily cagg
+    def list_popular_collections(self, filters):
+        sql = f"""
+        SELECT slug FROM streamlit_collections_daily cagg
         INNER JOIN collections c ON cagg.collection_id = c.id 
+        WHERE bucket >= '{filters["start_date"]}' AND bucket <= '{filters["end_date"]}' 
         GROUP BY c.id
         ORDER BY SUM(volume) DESC 
         LIMIT 30
         """
-        cursor = self.conn.cursor()
-        cursor.execute(sql)
-        return [row[0] for row in cursor.fetchall()]
+        self.cursor.execute(sql)
+        return [row[0] for row in self.cursor.fetchall()]
+
+    def collection_info(self, filters):
+        sql = f"""
+        SELECT name, url, 
+        details->>'image_url' AS image_url, 
+        details->>'discord_url' AS discord_url,
+        details->>'created_date' AS created_date,
+        details->>'external_url' AS web_url,
+        details->>'twitter_username' AS twitter_user
+        FROM collections
+        WHERE slug = '{filters["collection"]}'
+        """
+        self.cursor.execute(sql)
+        return self.cursor.fetchone()
