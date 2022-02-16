@@ -293,8 +293,8 @@ def start_ingest(start_date, end_date, rate_limiting=2):
     """Ingests NFT transactions (backfilling) from the defined time period.
 
     Args:
-        start_date ([type]): first timestamp when the ingestion should start from
-        end_date ([type]): final timestamp when the ingestion should finish at
+        start_date (datetime): first timestamp when the ingestion should start from
+        end_date (datetime): final timestamp when the ingestion should finish at
         rate_limiting (int, optional): Rate limit for the API. Defaults to 2.
     """
     cursor = conn.cursor()
