@@ -1,15 +1,9 @@
-import requests
 import json
 import psycopg2
 from psycopg2.extras import execute_values
-import time
 from datetime import datetime, timezone
 import config
-
-
-def write_json(json_obj, file_name):
-    with open(file_name, 'wb') as f:
-        f.write(json_obj)
+from opensea import OpenseaAPI, utils as opensea_utils
 
 
 def _insert_accounts(cursor):
@@ -81,30 +75,6 @@ def zero_gen(n):
     for i in range(0, n):
         zeros = zeros + "0"
     return zeros
-
-
-def fetch_opensea_json(occurred_before, occurred_after=None, limit=300, offset=0, json_file="", event_type=''):
-    url = "https://api.opensea.io/api/v1/events"
-    querystring = {"only_opensea":"false", 
-                   "offset":"{}".format(offset), 
-                   "limit":"{}".format(limit), 
-                   "occurred_before": "{}".format(occurred_before),
-                   "occurred_after": "{}".format(occurred_after)}
-    
-    if event_type != '':
-        querystring['event_type'] = event_type
-
-    apikey = config.OPENSEA_APIKEY
-    headers = None if apikey == "" else {"X-API-KEY": apikey}
-    response = requests.request("GET", url, headers=headers, params=querystring)
-    
-    # write the response to a JSON file
-    if json_file != "":
-        write_json(response.content, json_file)
-        
-    if "<!doctype html>" in response.text[:20].lower():
-        return None # blocked request
-    return response.json()
 
 
 def _get_price_value(event, price_key, decimals=18):
@@ -196,23 +166,26 @@ def _clean_event(event):
 def insert_values(cursor, list_of_dicts):
     columns = list_of_dicts[0].keys()
 
-    # create temp table to insert to
+    # create temp table
     sql_temp = "DROP TABLE IF EXISTS temp_table; CREATE TEMPORARY TABLE temp_table ({}".format(' TEXT, '.join(columns)) + " TEXT);"
     cursor.execute(sql_temp)
     
-    # batch insert to temp table
+    # batch insert into temp table
     sql_insert = "INSERT INTO temp_table ({}) VALUES %s".format(','.join(columns))
     values = [[value for value in item.values()] for item in list_of_dicts]
     execute_values(cursor, sql_insert, values)
-    print("Data loaded into temp table!")
     
-    # insert into tables (order matters!)
+    # insert into tables from the temp table (order matters because of FKs!)
+    
+    # relational data
     _insert_accounts(cursor)
     _insert_collections(cursor)
     _insert_assets(cursor)
+    
+    # time-series data
     _insert_nft_sales(cursor)
+    
     conn.commit()
-    print("Data ingested!")
 
 
 # turns the opensea response into a list of dicts that contain all needed data fields in a denormalized fashion
@@ -232,91 +205,53 @@ def clean_response(opensea_event_response):
         cleaned_from_acc = _clean_account(event, 'from_account')
         cleaned_to_acc = _clean_account(event, 'to_account')
         cleaned_owner_acc = _clean_account(asset_item, 'owner')
+        
         # event
         cleaned_event = _clean_event(event)
+        
         # asset
         cleaned_asset = _clean_asset(asset_item)
+        
         # collection
         cleaned_collection = _clean_collection(asset_item)
+        
         # everything denormalized
         denormalized_item = {**cleaned_seller, **cleaned_winner, **cleaned_from_acc, 
                              **cleaned_to_acc, **cleaned_event, **cleaned_asset, 
                              **cleaned_collection, **cleaned_owner_acc}
+        
         # add item to the list
         denormalized_items.append(denormalized_item)
     return denormalized_items
-    
-
-def fetch_multiple_events(start_date, end_date, rate_limiting=None, event_type="successful"):
-    # these values are the maximum that the OpenSea API allows per request
-    MAX_API_ITEMS = 300
-    MAX_OFFSET = 10000
-    
-    i = 0
-    MAX_ITERATIONS = MAX_OFFSET/MAX_API_ITEMS
-    while i < MAX_ITERATIONS:
-        # rate limiting
-        if rate_limiting != None:
-            time.sleep(rate_limiting)
-        print("---\nFetching transactions from OpenSea...")
-        opensea_response = fetch_opensea_json(occurred_before=int(end_date.timestamp()), 
-                                        occurred_after=int(start_date.timestamp()), 
-                                        limit=MAX_API_ITEMS, 
-                                        offset=i*MAX_API_ITEMS, 
-                                        event_type=event_type, 
-                                        json_file='latest_item.json')
-        
-        # if request is blocked by the API, wait then retry
-        if opensea_response == None:
-            print("Request blocked... retrying...")
-            time.sleep(6) # wait a little then continue with the same loop
-            continue
-            
-        # iterate
-        i += 1
-        
-        cleaned_response = clean_response(opensea_response)
-        if len(cleaned_response) > 0:
-            yield cleaned_response
-        else:
-            yield None
-
-                
-def fetch_earliest_date(conn):
-    sql = "SELECT time FROM nft_sales ORDER BY time ASC LIMIT 1;"
-    cursor = conn.cursor()
-    cursor.execute(sql)
-    return cursor.fetchone()[0].replace(tzinfo=timezone.utc)
 
 
-def start_ingest(start_date, end_date, rate_limiting=2):
-    """Ingests NFT transactions (backfilling) from the defined time period.
+def start_ingest(start_time, end_time, rate_limiting=2):
+    """Ingest OpenSea events from the defined time period using backward 
+    filling (starting with more recent items then going 'back' in time to 
+    download all the data from the given time interval) 
 
     Args:
-        start_date (datetime): first timestamp when the ingestion should start from
-        end_date (datetime): final timestamp when the ingestion should finish at
+        start_date (datetime): first timestamp be downloaded
+        end_date (datetime): final timestamp to be downloaded
         rate_limiting (int, optional): Rate limit for the API. Defaults to 2.
     """
     cursor = conn.cursor()
-    keep_ingesting = True
-    print("Start ingesting data between {} and {}".format(start_date, end_date))
-    while keep_ingesting:
-        multiple_events = fetch_multiple_events(start_date, end_date, rate_limiting=rate_limiting)
-        for one_batch in multiple_events:
-            if one_batch != None:
-                # check if batch is in the correct time period
-                current_batch_time = datetime.fromisoformat(one_batch[-1]['event_time']).replace(tzinfo=timezone.utc)
-                if len(one_batch) > 0 and current_batch_time >= start_date:
-                    insert_values(cursor, one_batch)
-                    print("Data has been backfilled until this time: {}".format(current_batch_time))
-                else:
-                    keep_ingesting = False
-                    break
-            else:
-                keep_ingesting = False
-                break
-        end_date = fetch_earliest_date(conn)
-    print("All rows have been inserted from the defined time period!")
+    print(f"Start ingesting data between {start_date} and {end_date} (time period: {end_date-start_date})")    
+    
+    api = OpenseaAPI(apikey=config.OPENSEA_APIKEY)
+    first_request = api.events(occurred_before=end_time)
+    next_url = opensea_utils.next_url_fix(first_request["next"])
+    
+    event_generator = api.events_backfill(until=start_time,
+                                          next_url=next_url,
+                                          rate_limiting=rate_limiting)
+    for event in event_generator:
+        print("----------\nDownloading data from OpenSea...")
+        if event is not None:
+            insert_values(cursor, clean_response(event))
+            print(f"Data downloaded until this time: {event['asset_events'][-1]['created_date']}")
+    print("All rows have been ingested from the defined time period!")
+
 
 conn = psycopg2.connect(database=config.DB_NAME, 
                         host=config.DB_HOST, 
@@ -328,7 +263,7 @@ conn = psycopg2.connect(database=config.DB_NAME,
 # all transactions will be inserted between the start_date and end_date timestamps
 start_date = datetime.fromisoformat(config.OPENSEA_START_DATE).replace(tzinfo=timezone.utc)
 end_date = datetime.fromisoformat(config.OPENSEA_END_DATE).replace(tzinfo=timezone.utc)
-start_ingest(start_date, end_date)
+start_ingest(start_date, end_date, rate_limiting=1)
 
 # You can also define dates like this:
 # start_date = datetime(2021, 10, 5, 3, 20, tzinfo=timezone.utc)
