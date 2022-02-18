@@ -239,7 +239,8 @@ def start_ingest(start_time, end_time, rate_limiting=2):
     print(f"Start ingesting data between {start_date} and {end_date} (time period: {end_date-start_date})")    
     
     api = OpenseaAPI(apikey=config.OPENSEA_APIKEY)
-    first_request = api.events(occurred_before=end_time)
+    first_request = api.events(occurred_before=end_time,
+                               event_type="successful")
     next_url = opensea_utils.next_url_fix(first_request["next"])
     
     event_generator = api.events_backfill(until=start_time,
