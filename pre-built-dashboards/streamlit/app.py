@@ -63,7 +63,7 @@ with st.sidebar:
         st.image(collection_info[2], use_column_width=False)
         
 
-@st.experimental_memo
+# @st.experimental_memo
 def cagg_collections_daily(filters):
     return db.table_cagg_collections_daily(filters)
 
