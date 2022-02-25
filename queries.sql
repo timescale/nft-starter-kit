@@ -128,6 +128,7 @@ SUM(total_price) AS volume_eth,
 LAST(asset_id, total_price) AS most_expensive_nft_id,
 MAX(total_price) AS max_price
 FROM nft_sales
+WHERE payment_symbol = 'ETH'
 GROUP BY bucket, collection_id;
 
 SELECT add_continuous_aggregate_policy('collections_daily',
