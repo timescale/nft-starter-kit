@@ -58,8 +58,8 @@ with st.sidebar:
     filters["start_date"] = st.date_input("Start date: ", value=filters["start_date"], min_value=min_date, max_value=max_date)
     filters["end_date"] = st.date_input("End date: ", value=filters["end_date"], min_value=min_date, max_value=max_date)
     collections_options = db.list_popular_collections(filters=filters)
-    filters["collection_one"] = st.selectbox("Collection", collections_options, collections_options.index("sipheriansurge"))
-    filters["collection_two"] = st.selectbox("compare to", collections_options, collections_options.index("n-project"))
+    filters["collection_one"] = st.selectbox("Collection", collections_options, 0)
+    filters["collection_two"] = st.selectbox("compare to", collections_options, 1)
     
     # display collection images in the correct order
     collections_info = db.collection_info(filters=filters)
