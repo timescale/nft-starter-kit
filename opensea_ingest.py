@@ -29,7 +29,7 @@ def _insert_accounts(cursor):
         ON CONFLICT DO NOTHING;
     """
     cursor.execute(sql)
-    
+
 
 def _insert_collections(cursor):
     sql = """
@@ -38,8 +38,8 @@ def _insert_collections(cursor):
         ON CONFLICT DO NOTHING;
     """
     cursor.execute(sql)
-    
-    
+
+
 def _insert_assets(cursor):
     sql = """
         INSERT INTO assets (id, name, collection_id, description, contract_date, url, img_url, owner_id, details)
@@ -50,6 +50,7 @@ def _insert_assets(cursor):
         ON CONFLICT DO NOTHING;
     """
     cursor.execute(sql)
+
 
 def _insert_nft_sales(cursor):
     sql = """
@@ -82,15 +83,15 @@ def _get_price_value(event, price_key, decimals=18):
         return None
     if event.get('payment_token') != None and event.get('payment_token').get('decimals') != None:
         decimals = event.get('payment_token').get('decimals')
-        
+
     amount_str = event.get(price_key)
     if len(amount_str) < 18:
         needed_zeros = 18-len(amount_str)
-        amount_str =  "0." + zero_gen(needed_zeros)  + amount_str
+        amount_str = "0." + zero_gen(needed_zeros) + amount_str
         return float(amount_str)
     return float(amount_str[:-decimals] + "." + amount_str[len(amount_str)-decimals:])
-    
-    
+
+
 def _get_account_item(event, key):
     account = {}
     if event.get(key) != None:
@@ -101,7 +102,7 @@ def _get_account_item(event, key):
     return account
 
 
-def _clean_collection(asset):  
+def _clean_collection(asset):
     return {
         'collection_slug': asset['collection']['slug'],
         'collection_name': asset['collection']['name'],
@@ -112,7 +113,7 @@ def _clean_collection(asset):
 
 def _clean_account(event, account_key):
     account_item = _get_account_item(event, account_key)
-    if account_key == 'owner': 
+    if account_key == 'owner':
         return {
             'account_owner_user_name': account_item.get('user'),
             'account_owner_address': account_item.get('address'),
@@ -149,42 +150,44 @@ def _clean_asset(asset):
         'asset_img_url': asset['image_url'],
         'asset_details': json.dumps(asset)
     }
-    
-    
+
+
 def _clean_event(event):
     return {
-            'event_id': event['id'],
-            'event_time': event.get('created_date'),
-            'event_auction_type': event.get('auction_type'),
-            'event_contract_address': event.get('contract_address'),
-            'event_quantity': event.get('quantity'),
-            'event_payment_symbol': None if event.get('payment_token') == None else event.get('payment_token').get('symbol'),
-            'event_total_price': _get_price_value(event, price_key='total_price')
-            }
+        'event_id': event['id'],
+        'event_time': event.get('created_date'),
+        'event_auction_type': event.get('auction_type'),
+        'event_contract_address': event.get('contract_address'),
+        'event_quantity': event.get('quantity'),
+        'event_payment_symbol': None if event.get('payment_token') == None else event.get('payment_token').get('symbol'),
+        'event_total_price': _get_price_value(event, price_key='total_price')
+    }
 
 
 def insert_values(cursor, list_of_dicts):
     columns = list_of_dicts[0].keys()
 
     # create temp table
-    sql_temp = "DROP TABLE IF EXISTS temp_table; CREATE TEMPORARY TABLE temp_table ({}".format(' TEXT, '.join(columns)) + " TEXT);"
+    sql_temp = "DROP TABLE IF EXISTS temp_table; CREATE TEMPORARY TABLE temp_table ({}".format(
+        ' TEXT, '.join(columns)) + " TEXT);"
     cursor.execute(sql_temp)
-    
+
     # batch insert into temp table
-    sql_insert = "INSERT INTO temp_table ({}) VALUES %s".format(','.join(columns))
+    sql_insert = "INSERT INTO temp_table ({}) VALUES %s".format(
+        ','.join(columns))
     values = [[value for value in item.values()] for item in list_of_dicts]
     execute_values(cursor, sql_insert, values)
-    
+
     # insert into tables from the temp table (order matters because of FKs!)
-    
+
     # relational data
     _insert_accounts(cursor)
     _insert_collections(cursor)
     _insert_assets(cursor)
-    
+
     # time-series data
     _insert_nft_sales(cursor)
-    
+
     conn.commit()
 
 
@@ -192,34 +195,34 @@ def insert_values(cursor, list_of_dicts):
 def clean_response(opensea_event_response):
     event_items = opensea_event_response['asset_events']
     denormalized_items = []
-    for event in event_items:    
+    for event in event_items:
         asset_item = event.get('asset')
-        
+
         # check if asset item exists
         if event.get('asset') == None:
-            continue # if there's no asset that means it's not a single NFT transaction so skip this item
-        
+            continue  # if there's no asset that means it's not a single NFT transaction so skip this item
+
         # accounts
         cleaned_seller = _clean_account(event, 'seller')
         cleaned_winner = _clean_account(event, 'winner_account')
         cleaned_from_acc = _clean_account(event, 'from_account')
         cleaned_to_acc = _clean_account(event, 'to_account')
         cleaned_owner_acc = _clean_account(asset_item, 'owner')
-        
+
         # event
         cleaned_event = _clean_event(event)
-        
+
         # asset
         cleaned_asset = _clean_asset(asset_item)
-        
+
         # collection
         cleaned_collection = _clean_collection(asset_item)
-        
+
         # everything denormalized
-        denormalized_item = {**cleaned_seller, **cleaned_winner, **cleaned_from_acc, 
-                             **cleaned_to_acc, **cleaned_event, **cleaned_asset, 
+        denormalized_item = {**cleaned_seller, **cleaned_winner, **cleaned_from_acc,
+                             **cleaned_to_acc, **cleaned_event, **cleaned_asset,
                              **cleaned_collection, **cleaned_owner_acc}
-        
+
         # add item to the list
         denormalized_items.append(denormalized_item)
     return denormalized_items
@@ -236,34 +239,36 @@ def start_ingest(start_time, end_time, rate_limiting=2):
         rate_limiting (int, optional): Rate limit for the API. Defaults to 2.
     """
     cursor = conn.cursor()
-    print(f"Start ingesting data between {start_date} and {end_date} (time period: {end_date-start_date})")    
-    
+    print(
+        f"Start ingesting data between {start_date} and {end_date} (time period: {end_date-start_date})")
+
     api = OpenseaAPI(apikey=config.OPENSEA_APIKEY)
-    first_request = api.events(occurred_before=end_time,
-                               event_type="successful")
-    next_url = opensea_utils.next_url_fix(first_request["next"])
-    
-    event_generator = api.events_backfill(until=start_time,
-                                          next_url=next_url,
+
+    event_generator = api.events_backfill(start=end_time,
+                                          until=start_time,
+                                          event_type="successful",
                                           rate_limiting=rate_limiting)
     for event in event_generator:
         print("----------\nDownloading data from OpenSea...")
         if event is not None:
             insert_values(cursor, clean_response(event))
-            print(f"Data downloaded until this time: {event['asset_events'][-1]['created_date']}")
+            print(
+                f"Data downloaded until this time: {event['asset_events'][-1]['created_date']}")
     print("All rows have been ingested from the defined time period!")
 
 
-conn = psycopg2.connect(database=config.DB_NAME, 
-                        host=config.DB_HOST, 
-                        user=config.DB_USER, 
-                        password=config.DB_PASS, 
+conn = psycopg2.connect(database=config.DB_NAME,
+                        host=config.DB_HOST,
+                        user=config.DB_USER,
+                        password=config.DB_PASS,
                         port=config.DB_PORT)
 
 # insert OpenSea data from a defined time period
 # all transactions will be inserted between the start_date and end_date timestamps
-start_date = datetime.fromisoformat(config.OPENSEA_START_DATE).replace(tzinfo=timezone.utc)
-end_date = datetime.fromisoformat(config.OPENSEA_END_DATE).replace(tzinfo=timezone.utc)
+start_date = datetime.fromisoformat(
+    config.OPENSEA_START_DATE).replace(tzinfo=timezone.utc)
+end_date = datetime.fromisoformat(
+    config.OPENSEA_END_DATE).replace(tzinfo=timezone.utc)
 start_ingest(start_date, end_date, rate_limiting=1)
 
 # You can also define dates like this:
