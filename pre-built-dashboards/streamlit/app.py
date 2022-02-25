@@ -46,7 +46,8 @@ st.info(
 
 filters = {"start_date": datetime(2021, 9, 1),
            "end_date": datetime(2021, 10, 12),
-           "collection": []}
+           "collection_one": "",
+           "collection_two": ""}
 
 collections_info = None
 
@@ -57,12 +58,20 @@ with st.sidebar:
     filters["start_date"] = st.date_input("Start date: ", value=filters["start_date"], min_value=min_date, max_value=max_date)
     filters["end_date"] = st.date_input("End date: ", value=filters["end_date"], min_value=min_date, max_value=max_date)
     collections_options = db.list_popular_collections(filters=filters)
-    filters["collection"].append(st.selectbox("Collection", collections_options, collections_options.index("n-project")))
-    filters["collection"].append(st.selectbox("compare to", collections_options, collections_options.index("lostpoets")))
+    filters["collection_one"] = st.selectbox("Collection", collections_options, collections_options.index("sipheriansurge"))
+    filters["collection_two"] = st.selectbox("compare to", collections_options, collections_options.index("n-project"))
+    
+    # display collection images in the correct order
     collections_info = db.collection_info(filters=filters)
-    for info in collections_info:
-        if info[2] is not None:
-            st.image(info[2], use_column_width=False)
+    swap = None
+    if collections_info[0][7] != filters["collection_one"]:
+        swap = collections_info[0]
+        collections_info[0] = collections_info[1]
+        collections_info[1] = swap
+    
+    st.image(collections_info[0][2])
+    if len(collections_info) > 1:
+        st.image(collections_info[1][2])
         
 
 # @st.experimental_memo
@@ -103,7 +112,7 @@ with col2:
 
 st.subheader(f"Daily median price")
 chart = px.line(cagg_df, x="bucket", y=["median price"], color="slug",
-                template="simple_white")
+                template="simple_white", markers=True)
 st.plotly_chart(chart, use_container_width=True)
 
 
