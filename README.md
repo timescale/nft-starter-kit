@@ -16,10 +16,6 @@ For more information about the NFT Starter Kit, see the [announcement blog post]
 * [Pre-built dashboards][dash] and charts in Apache Superset and [Grafana](https://github.com/timescale/nft-starter-kit/blob/master/pre-built-dashboards/grafana-collections.json) for visualizing your data analysis
 * [Queries][queries] to use as a starting point for your own analysis
 
-## Earn a Time Travel Tiger NFT
-
-[Time Travel Tigers](https://opensea.io/collection/time-travel-tigers-by-timescale) is a collection of 20 hand-crafted NFTs featuring Timescale’s mascot: Eon the friendly tiger, as they travel through space and time, spreading the word about time-series data wearing various disguises to blend in. The first 20 people to complete the [NFT Starter Kit tutorial](https://docs.timescale.com/timescaledb/latest/tutorials/analyze-nft-data/) can earn a limited edition NFT from the collection, for free! Simply download the NFT Starter Kit, complete the tutorial and fill out this [form](https://tsdb.co/earn-eon-nft), and we’ll send one of the limited-edition Eon NFTs to your ETH address (at no cost to you!).
-
 ## Get started
 Clone the `nft-starter-kit` repository:
 ```bash
