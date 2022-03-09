@@ -9,12 +9,13 @@ For more information about the NFT Starter Kit, see the [announcement blog post]
 
 ## Project components
 
-* [Data ingestion script][ingest], which collects historical data from OpenSea and ingests it into TimescaleDB
-* [Sample dataset][sample], to get started quickly, if you'd prefer not to ingest live data
-* [Schema][schema] for storing NFT sales, assets, collections, and accounts
-* [Local TimescaleDB instance][local-ts], pre-loaded with sample NFT data
-* [Pre-built dashboards][dash] and charts in Apache Superset and [Grafana](https://github.com/timescale/nft-starter-kit/blob/master/pre-built-dashboards/grafana-collections.json) for visualizing your data analysis
-* [Queries][queries] to use as a starting point for your own analysis
+* Data ingestion script, that collects historical data from OpenSea and ingests it into TimescaleDB. [Read more!](#running-the-data-ingestion-script)
+* Sample dataset, that you can download and ingest to get started quickly. [Read more!](#ingest-the-sample-data)
+* Local TimescaleDB instance, pre-loaded with sample NFT data. [Read more!](pre-built-dashboards/database/README.md)
+* Streamlit dashboard. [Read more!](pre-built-dashboards/streamlit/README.md)
+* Relational schema for storing NFT sales, assets, collections, and accounts. Read more!
+* [Pre-built dashboards][dash] and charts in Apache Superset and [Grafana](https://github.com/timescale/nft-starter-kit/blob/master/pre-built-dashboards/grafana-collections.json) for visualizing your data analysis. Read more!
+* [Queries][queries] to use as a starting point for your own analysis. Read more!
 
 ## Get started
 Clone the `nft-starter-kit` repository:
@@ -149,6 +150,9 @@ OpenSea (this sample was used for the Superset dashboard as well)
     ```sql
     SELECT count(*), MIN(time) AS min_date, MAX(time) AS max_date FROM nft_sales 
     ```
+
+## NFT relational schema
+
 
 
 [schema]: https://github.com/timescale/nft-starter-kit/blob/master/schema.sql
