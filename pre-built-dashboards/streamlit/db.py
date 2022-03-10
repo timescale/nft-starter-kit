@@ -12,12 +12,16 @@ class NFTDatabase:
         self.cursor = self.conn.cursor()
         
     def table_cagg_collections_daily(self, filters):
+        if filters["time_bucket"].lower() == "weekly":
+            cagg_name = "streamlit_collections_weekly"
+        else:
+            cagg_name = "streamlit_collections_daily"
         sql = f"""
-        SELECT bucket, slug, volume AS "volume (count)", volume_eth AS "volume (ETH)", max_price AS "max price", median_price AS "median price"
-        FROM streamlit_collections_daily cagg
+        SELECT bucket, slug, volume AS "volume (count)", volume_eth AS "volume (ETH)", max_price AS "max price", median_price AS "median price",
+        distinct_count(seller_hyperloglog) as seller_count, distinct_count(winner_hyperloglog) as winner_count
+        FROM {cagg_name} cagg
         INNER JOIN collections c ON c.id = cagg.collection_id
         WHERE slug IN ('{filters["collection_one"]}', '{filters["collection_two"]}') AND bucket >= '{filters["start_date"]}' AND bucket <= '{filters["end_date"]}' 
-        ORDER BY bucket
         """
         return pd.read_sql(sql, self.conn)
 
@@ -58,4 +62,3 @@ class NFTDatabase:
         cur = self.conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
         cur.execute(sql)
         return cur.fetchall()
-

@@ -44,7 +44,8 @@ st.info(
     )
     
 
-filters = {"start_date": datetime(2021, 9, 1),
+filters = {"time_bucket": "Daily",
+           "start_date": datetime(2021, 9, 1),
            "end_date": datetime(2021, 10, 12),
            "collection_one": "",
            "collection_two": ""}
@@ -55,10 +56,11 @@ with st.sidebar:
     # display filters
     min_date = datetime(2021, 1, 1)
     max_date = datetime(2021, 10, 12)
+    filters["time_bucket"] = st.selectbox("Time bucket:", ["Daily", "Weekly"], 0)
     filters["start_date"] = st.date_input("Start date: ", value=filters["start_date"], min_value=min_date, max_value=max_date)
     filters["end_date"] = st.date_input("End date: ", value=filters["end_date"], min_value=min_date, max_value=max_date)
     collections_options = db.list_popular_collections(filters=filters)
-    filters["collection_one"] = st.selectbox("Collection", collections_options, 0)
+    filters["collection_one"] = st.selectbox("Collection:", collections_options, 0)
     filters["collection_two"] = st.selectbox("compare to", collections_options, 1)
     
     # display collection images in the correct order
@@ -78,7 +80,7 @@ with st.sidebar:
 def cagg_collections_daily(filters):
     return db.table_cagg_collections_daily(filters)
 
-cagg_df = cagg_collections_daily(filters)
+cagg_df = cagg_collections_daily(filters).sort_values(by=["bucket"])
 
 
 col1, col2 = st.columns(2)
@@ -110,22 +112,34 @@ with col2:
     st.table(df[["name", "price", "sold"]])
 
 
-st.subheader(f"Daily median price")
+st.subheader(f"{filters['time_bucket']} median price")
 chart = px.line(cagg_df, x="bucket", y=["median price"], color="slug",
                 template="simple_white", markers=True)
 st.plotly_chart(chart, use_container_width=True)
 
+col1, col2 = st.columns(2)
+with col1:
+    st.subheader(f"{filters['time_bucket']} unique sellers (approximate)")
+    chart = px.bar(cagg_df, x="bucket", y="seller_count", color="slug",
+                   barmode='group', template="simple_white")
+    st.plotly_chart(chart)
+
+with col2:
+    st.subheader(f"{filters['time_bucket']} unique buyers (approximate)")
+    chart = px.bar(cagg_df, x="bucket", y="winner_count", color="slug",
+                   barmode='group', template="simple_white")
+    st.plotly_chart(chart)
+
 
 col1, col2 = st.columns(2)
 with col1:
-    st.subheader(f"Daily number of NFT transactions")
+    st.subheader(f"{filters['time_bucket']} number of NFT transactions")
     chart = px.line(cagg_df, x="bucket", y="volume (count)", color="slug",
                     template="simple_white", markers=True)
     st.plotly_chart(chart)
 
 with col2:
-    st.subheader(f"Daily ETH volume of NFT transactions")
+    st.subheader(f"{filters['time_bucket']} ETH volume of NFT transactions")
     chart = px.line(cagg_df, x="bucket", y="volume (ETH)", color="slug",
                     template="simple_white", markers=True)
     st.plotly_chart(chart)
-
