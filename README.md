@@ -8,20 +8,25 @@ We recommend following along with the [NFT Starter Kit tutorial](https://docs.ti
 For more information about the NFT Starter Kit, see the [announcement blog post](https://tsdb.co/nft-starter-kit-blog).
 
 ## Project components
+We provide multiple standalone components to help your data exploration journey at each level.
 
-* [Data ingestion script][ingest], which collects historical data from OpenSea and ingests it into TimescaleDB
-* [Sample dataset][sample], to get started quickly, if you'd prefer not to ingest live data
-* [Schema][schema] for storing NFT sales, assets, collections, and accounts
-* [Local TimescaleDB instance][local-ts], pre-loaded with sample NFT data
-* [Pre-built dashboards][dash] and charts in Apache Superset and [Grafana](https://github.com/timescale/nft-starter-kit/blob/master/pre-built-dashboards/grafana-collections.json) for visualizing your data analysis
-* [Queries][queries] to use as a starting point for your own analysis
+### Design database schema
+* [Relational schema](/schema.sql) for storing NFT sales, assets, collections, and accounts.
 
-## Earn a Time Travel Tiger NFT
+### Get data
+* [Data ingestion script](/opensea_ingest.py), that collects historical data from OpenSea and ingests it into TimescaleDB. [Read more!](#running-the-data-ingestion-script)
+* [Sample data][sample-dw], that you can download and ingest to get started quickly. [Read more!](#ingest-the-sample-data)
 
-[Time Travel Tigers](https://opensea.io/collection/time-travel-tigers-by-timescale) is a collection of 20 hand-crafted NFTs featuring Timescale’s mascot: Eon the friendly tiger, as they travel through space and time, spreading the word about time-series data wearing various disguises to blend in. The first 20 people to complete the [NFT Starter Kit tutorial](https://docs.timescale.com/timescaledb/latest/tutorials/analyze-nft-data/) can earn a limited edition NFT from the collection, for free! Simply download the NFT Starter Kit, complete the tutorial and fill out this [form](https://tsdb.co/earn-eon-nft), and we’ll send one of the limited-edition Eon NFTs to your ETH address (at no cost to you!).
+### Build dashboards
+* Streamlit dashboard, to analyze collection sales. [Read more!](pre-built-dashboards/streamlit/README.md)
+* [Grafana dashboard](/pre-built-dashboards/grafana-collections.json) template file
+* [Dockerized TimescaleDB + Apache Superset](#setting-up-the-pre-built-superset-dashboards) with pre-loaded data, to store and analyze NFTs.
+
+### Analyze data
+* [Sample queries][queries] to use as a starting point for your own analysis.
 
 ## Get started
-Clone the `nft-starter-kit` repository:
+Whichever component you are most interested in, first clone the repository:
 ```bash
 git clone https://github.com/timescale/nft-starter-kit.git
 cd nft-starter-kit
@@ -32,6 +37,8 @@ This part of the project is fully Dockerized. TimescaleDB and the Superset dashb
 is built out automatically using docker-compose. After completing the steps below, you 
 will have a local TimescaleDB and Superset instance running in 
 containers - containing 500K+ NFT transactions from OpenSea.
+
+![superset dashboard](https://www.timescale.com/blog/content/images/2021/10/Superset_Dashboard--1-.png)
 
 The Docker service uses port 8088 (for Superset) and 6543 (for TimescaleDB) so make sure 
 there's no other services using those ports before starting the installation process.
@@ -64,9 +71,6 @@ there's no other services using those ports before starting the installation pro
     ```
 1. Open the `Databases` page inside Superset (http://0.0.0.0:8088/databaseview/list/). You will see exactly one item there
     called `NFT Starter Kit`.
-1. Click the edit button (pencil icon) on the right side of the table (under "Actions").
-1. Don't change anything in the popup window, just click `Finish`. This will make sure the database can be 
-   reached from Superset.
 1. Go check out your NFT dashboards! 
 
     Collections dashboard: http://0.0.0.0:8088/superset/dashboard/1
@@ -155,10 +159,11 @@ OpenSea (this sample was used for the Superset dashboard as well)
     ```
 
 
+
+
 [schema]: https://github.com/timescale/nft-starter-kit/blob/master/schema.sql
 [install-ts]: https://docs.timescale.com/timescaledb/latest/how-to-guides/install-timescaledb/#install-timescaledb
 [ingest]: https://github.com/timescale/nft-starter-kit/blob/master/opensea_ingest.py
-[sample]: https://github.com/timescale/nft-starter-kit/tree/master/pre-built-dashboards/database/data
 [local-ts]: https://github.com/timescale/nft-starter-kit/tree/master/pre-built-dashboards/database
 [dash]: https://github.com/timescale/nft-starter-kit/tree/master/pre-built-dashboards/dashboard
 [queries]: https://github.com/timescale/nft-starter-kit/blob/master/queries.sql
