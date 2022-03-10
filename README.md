@@ -30,6 +30,8 @@ is built out automatically using docker-compose. After completing the steps belo
 will have a local TimescaleDB and Superset instance running in 
 containers - containing 500K+ NFT transactions from OpenSea.
 
+![superset dashboard](https://www.timescale.com/blog/content/images/2021/10/Superset_Dashboard--1-.png)
+
 The Docker service uses port 8088 (for Superset) and 6543 (for TimescaleDB) so make sure 
 there's no other services using those ports before starting the installation process.
 
@@ -61,9 +63,6 @@ there's no other services using those ports before starting the installation pro
     ```
 1. Open the `Databases` page inside Superset (http://0.0.0.0:8088/databaseview/list/). You will see exactly one item there
     called `NFT Starter Kit`.
-1. Click the edit button (pencil icon) on the right side of the table (under "Actions").
-1. Don't change anything in the popup window, just click `Finish`. This will make sure the database can be 
-   reached from Superset.
 1. Go check out your NFT dashboards! 
 
     Collections dashboard: http://0.0.0.0:8088/superset/dashboard/1
@@ -151,7 +150,6 @@ OpenSea (this sample was used for the Superset dashboard as well)
     SELECT count(*), MIN(time) AS min_date, MAX(time) AS max_date FROM nft_sales 
     ```
 
-## NFT relational schema
 
 
 
