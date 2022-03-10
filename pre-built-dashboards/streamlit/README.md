@@ -1,5 +1,6 @@
 # Streamlit NFT sales dashboard
 
+![collections dashboard](../images/streamlit.gif)
 
 ## Prerequisites
 * Python 3
