@@ -8,14 +8,22 @@ We recommend following along with the [NFT Starter Kit tutorial](https://docs.ti
 For more information about the NFT Starter Kit, see the [announcement blog post](https://tsdb.co/nft-starter-kit-blog).
 
 ## Project components
+We provide multiple standalone components to help your data exploration journey at each level.
 
+### Design database schema
+* [Relational schema](/schema.sql) for storing NFT sales, assets, collections, and accounts.
+
+### Get data
 * Data ingestion script, that collects historical data from OpenSea and ingests it into TimescaleDB. [Read more!](#running-the-data-ingestion-script)
-* Sample dataset, that you can download and ingest to get started quickly. [Read more!](#ingest-the-sample-data)
-* Local TimescaleDB instance, pre-loaded with sample NFT data. [Read more!](pre-built-dashboards/database/README.md)
-* Streamlit dashboard. [Read more!](pre-built-dashboards/streamlit/README.md)
-* Relational schema for storing NFT sales, assets, collections, and accounts. Read more!
-* [Pre-built dashboards][dash] and charts in Apache Superset and [Grafana](https://github.com/timescale/nft-starter-kit/blob/master/pre-built-dashboards/grafana-collections.json) for visualizing your data analysis. Read more!
-* [Queries][queries] to use as a starting point for your own analysis. Read more!
+* Sample data, that you can download and ingest to get started quickly. [Read more!](#ingest-the-sample-data)
+
+### Build dashboards
+* Streamlit dashboard, to analyze collection sales. [Read more!](pre-built-dashboards/streamlit/README.md)
+* [Grafana dashboard](/pre-built-dashboards/grafana-collections.json) template file
+* [Dockerized TimescaleDB + Apache Superset](#setting-up-the-pre-built-superset-dashboards) with pre-loaded data, to store and analyze NFTs.
+
+### Analyze data
+* [Sample queries][queries] to use as a starting point for your own analysis.
 
 ## Get started
 Clone the `nft-starter-kit` repository:
@@ -156,7 +164,6 @@ OpenSea (this sample was used for the Superset dashboard as well)
 [schema]: https://github.com/timescale/nft-starter-kit/blob/master/schema.sql
 [install-ts]: https://docs.timescale.com/timescaledb/latest/how-to-guides/install-timescaledb/#install-timescaledb
 [ingest]: https://github.com/timescale/nft-starter-kit/blob/master/opensea_ingest.py
-[sample]: https://github.com/timescale/nft-starter-kit/tree/master/pre-built-dashboards/database/data
 [local-ts]: https://github.com/timescale/nft-starter-kit/tree/master/pre-built-dashboards/database
 [dash]: https://github.com/timescale/nft-starter-kit/tree/master/pre-built-dashboards/dashboard
 [queries]: https://github.com/timescale/nft-starter-kit/blob/master/queries.sql
