@@ -15,7 +15,7 @@ We provide multiple standalone components to help your data exploration journey 
 
 ### Get data
 * [Data ingestion script](/opensea_ingest.py), that collects historical data from OpenSea and ingests it into TimescaleDB. [Read more!](#running-the-data-ingestion-script)
-* [Sample data][sample-dw]: https://assets.timescale.com/docs/downloads/nft_sample.zip, that you can download and ingest to get started quickly. [Read more!](#ingest-the-sample-data)
+* [Sample data][sample-dw], that you can download and ingest to get started quickly. [Read more!](#ingest-the-sample-data)
 
 ### Build dashboards
 * Streamlit dashboard, to analyze collection sales. [Read more!](pre-built-dashboards/streamlit/README.md)
