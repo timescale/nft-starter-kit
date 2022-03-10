@@ -14,8 +14,8 @@ We provide multiple standalone components to help your data exploration journey 
 * [Relational schema](/schema.sql) for storing NFT sales, assets, collections, and accounts.
 
 ### Get data
-* Data ingestion script, that collects historical data from OpenSea and ingests it into TimescaleDB. [Read more!](#running-the-data-ingestion-script)
-* Sample data, that you can download and ingest to get started quickly. [Read more!](#ingest-the-sample-data)
+* [Data ingestion script](/opensea_ingest.py), that collects historical data from OpenSea and ingests it into TimescaleDB. [Read more!](#running-the-data-ingestion-script)
+* [Sample data][sample-dw]: https://assets.timescale.com/docs/downloads/nft_sample.zip, that you can download and ingest to get started quickly. [Read more!](#ingest-the-sample-data)
 
 ### Build dashboards
 * Streamlit dashboard, to analyze collection sales. [Read more!](pre-built-dashboards/streamlit/README.md)
@@ -26,7 +26,7 @@ We provide multiple standalone components to help your data exploration journey 
 * [Sample queries][queries] to use as a starting point for your own analysis.
 
 ## Get started
-Clone the `nft-starter-kit` repository:
+Whichever component you are most interested in, first clone the repository:
 ```bash
 git clone https://github.com/timescale/nft-starter-kit.git
 cd nft-starter-kit
