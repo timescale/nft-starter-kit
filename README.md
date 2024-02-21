@@ -3,7 +3,7 @@ The Timescale NFT Starter Kit is a step-by-step guide to get up and running with
 
 The NFT Starter Kit will give you a foundation for analyzing NFT trends so that you can bring some data to your purchasing decisions, or just learn about the NFT space from a data-driven perspective. It also serves as a solid foundation for your more complex NFT analysis projects in the future.
 
-We recommend following along with the [NFT Starter Kit tutorial](https://docs.timescale.com/timescaledb/latest/tutorials/analyze-nft-data/) to get familar with the contents of this repository.
+We recommend following along with the [NFT Starter Kit tutorial](https://www.timescale.com/blog/analyzing-5-million-nft-sales-using-postgresql/) to get familiar with the contents of this repository.
 
 For more information about the NFT Starter Kit, see the [announcement blog post](https://tsdb.co/nft-starter-kit-blog).
 
